@@ -1,0 +1,54 @@
+{
+    "malls": [
+        {
+            "name": "Mall of Arabia",
+            "gmapId": "ChIJeZAyaVFXWBQRD4a_Vq4vVvg",
+            "fsId": "4e64d41e483bd9a975557768"
+        },
+        {
+            "name": "Cairo Festival City Mall",
+            "gmapId": "ChIJYQYFKvE8WBQRIJRXhDyYEYE",
+            "fsId": "5268f5d2498ee025c2cb6794"
+        },
+        {
+            "name": "Downtown Mall",
+            "gmapId": "ChIJ98iK8-88WBQR_RBD6r2sO2A",
+            "fsId": "4d5d3a959ac9a09369027994"
+        },
+        {
+            "name": "Americana Plaza",
+            "gmapId": "ChIJ4wWsX2paWBQRGPkCKzwfhy0",
+            "fsId": "d61dfe4b087a6ab444d33"
+        },
+        {
+            "name": "Citystars Mall",
+            "gmapId": "ChIJo0ecE_gVWBQRGGrouhZFdME",
+            "fsId": "4b853e48f964a520845231e3"
+        },
+        {
+            "name": "Sun City Mall",
+            "gmapId": "ChIJmVTb2UUWWBQRjnpeYIqBncQ",
+            "fsId": "e0e485498e46a6b3609b09"
+        },
+        {
+            "name": "Mall Of Egypt",
+            "gmapId": "ChIJGfFdneZQWBQRoFxwQ5okV14",
+            "fsId": "dcd44498e2ebd18d8e1d2"
+        },
+        {
+            "name": "First Mall",
+            "gmapId": "ChIJnQUHZCdHWBQRDaAJ6j1aog0",
+            "fsId": "4c72eb0457b6a143e8d1c6cc"
+        },
+        {
+            "name": "Nile City Towers",
+            "gmapId": "ChIJUTumGvpAWBQRdeaHrFtl1HM",
+            "fsId": "4ce9181ae888f04d3e2f466b"
+        },
+        {
+            "name": "Porto Cairo Mall",
+            "gmapId": "ChIJ5_bMsF89WBQRM7-YOesuHM8",
+            "fsId": "fb8a611e4b04abc0c11d4bc"
+        }
+    ]
+}
