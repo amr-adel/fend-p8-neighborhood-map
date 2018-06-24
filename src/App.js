@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListPlaces from "./ListPlaces";
+import Map from "./Map";
 import './App.css';
 
 class App extends Component {
@@ -34,6 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <ListPlaces filter={this.updateQuery} filteredMalls={this.state.filteredMalls} />
+        <Map filteredMalls={this.state.filteredMalls} />
       </div>
     );
   }
