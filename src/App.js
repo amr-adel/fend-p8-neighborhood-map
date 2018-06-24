@@ -8,11 +8,13 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.updateQuery = this.updateQuery.bind(this)
+    this.showInfo = this.showInfo.bind(this)
   }
 
   state = {
     malls: [],
     filteredMalls: [],
+    selected: null
   };
 
   componentDidMount() {
@@ -30,12 +32,15 @@ class App extends Component {
     this.setState({ filteredMalls: this.state.malls.filter(mall => mall.name.toLowerCase().indexOf(query.trim().toLowerCase()) !== -1) })
   }
 
+  showInfo = function(mall) {
+    this.setState({ selected: mall })
+  }
 
   render() {
     return (
       <div className="App">
-        <ListPlaces filter={this.updateQuery} filteredMalls={this.state.filteredMalls} />
-        <Map filteredMalls={this.state.filteredMalls} />
+        <ListPlaces filter={this.updateQuery} showInfo={this.showInfo} filteredMalls={this.state.filteredMalls} />
+        <Map filteredMalls={this.state.filteredMalls} selected={this.state.selected} />
       </div>
     );
   }

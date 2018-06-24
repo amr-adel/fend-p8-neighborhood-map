@@ -15,7 +15,7 @@ class ListPlaces extends Component {
 
                 <ol className="places">
                     {this.props.filteredMalls.map(mall => (
-                        <li className="place" key={mall.gmapId}>
+                        <li className="place" key={mall.gmapId} onClick={() => this.props.showInfo(mall)} >
                             {mall.name}
                         </li>
                     ))}
