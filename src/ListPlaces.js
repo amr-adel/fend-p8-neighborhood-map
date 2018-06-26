@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 class ListPlaces extends Component {
 
-    state = {
-
-    }
-
     filter(query) {
         this.props.filter(query)
 
@@ -21,17 +17,22 @@ class ListPlaces extends Component {
     }
 
     fetchFourSquare(id) {
-
         fetch(`https://api.foursquare.com/v2/venues/${id}?client_id=N0UR5Z3XKXDNY4GWMBV4H4J0VZIHDCKLUZIZ0U4RBNLAE1CG&client_secret=LVDZ0NKPQVY1SMUFSVJJT02ARZOJXWUFMIJ1AZ0ACSLMKNHR&v=20180620`)
-        .then(res => res.json())
-        .then(data => this.detailsOutput(data.response))
-        // .then(data => console.log(data.response))
+            .then(res => res.json())
+            .then(data => this.detailsOutput(data.response))
     }
 
     detailsOutput(details) {
         setTimeout(() => {
-            document.querySelector(`#fs${details.venue.id} .details`).innerHTML = details.venue.location.formattedAddress[0]
+            document.querySelector(`#fs${details.venue.id} .details`).innerHTML = `
+            <img class="photo" src="${details.venue.bestPhoto.prefix}500x300${details.venue.bestPhoto.suffix}" alt="${details.venue.name}">
+            <div class="rating" style="color: #${details.venue.ratingColor};">${details.venue.rating}</div>
+            <div class="address">${details.venue.location.formattedAddress[0]}</div>
+            <div class="status">Liked by ${details.venue.likes.count} user</div>
+            <a class="link" href="${details.venue.canonicalUrl}" target="_blank">More on FourSquare</a>
+            `
         }, 500);
+
     }
 
     componentDidUpdate() {
@@ -42,15 +43,8 @@ class ListPlaces extends Component {
 
             document.getElementById('fs' + this.props.selected.fsId).classList.add('selected')
 
-            // this.fetchFourSquare(this.props.selected.fsId)
+            this.fetchFourSquare(this.props.selected.fsId)
 
-            document.querySelector(`#fs${this.props.selected.fsId} .details`).innerHTML = `
-                <img class="photo" src="https://irs1.4sqi.net/img/general/500x300/63892328_N0A_9qgk0N30lHiqDWIRtNb-0YfO84BIxHc9SP7h4rY.jpg" alt="Alternate text">
-                <div class="rating" style="color: #00B551;">9.3</div>
-                <div class="address">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                <div class="status">Open until 1:00 AM</div>
-                <a class="link" href="https://foursquare.com/v/foursquare-hq/4ab7e57cf964a5205f7b20e3" target="_blank">More on FourSquare</a>
-                `
         }
     }
 
