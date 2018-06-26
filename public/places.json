@@ -22,7 +22,7 @@
             "name": "Americana Plaza",
             "gmapId": "ChIJ4wWsX2paWBQRGPkCKzwfhy0",
             "coor": { "lat": 30.0275716, "lng": 31.013195600000017 },
-            "fsId": "d61dfe4b087a6ab444d33"
+            "fsId": "507d61dfe4b087a6ab444d33"
         },
         {
             "name": "Citystars Mall",
@@ -34,13 +34,13 @@
             "name": "Sun City Mall",
             "gmapId": "ChIJmVTb2UUWWBQRjnpeYIqBncQ",
             "coor": { "lat": 30.102616, "lng": 31.38614480000001 },
-            "fsId": "e0e485498e46a6b3609b09"
+            "fsId": "53e0e485498e46a6b3609b09"
         },
         {
             "name": "Mall Of Egypt",
             "gmapId": "ChIJGfFdneZQWBQRoFxwQ5okV14",
             "coor": { "lat": 29.9722532, "lng": 31.017524399999957 },
-            "fsId": "dcd44498e2ebd18d8e1d2"
+            "fsId": "519dcd44498e2ebd18d8e1d2"
         },
         {
             "name": "First Mall",
@@ -58,7 +58,7 @@
             "name": "Porto Cairo Mall",
             "gmapId": "ChIJ5_bMsF89WBQRM7-YOesuHM8",
             "coor": { "lat": 30.0644511, "lng": 31.42453690000002 },
-            "fsId": "fb8a611e4b04abc0c11d4bc"
+            "fsId": "4fb8a611e4b04abc0c11d4bc"
         }
     ]
 }
