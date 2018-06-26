@@ -26,8 +26,10 @@ class Map extends Component {
 
 
     updateMarkers = function (malls) {
+
         this.state.markers.map(marker => marker.setMap(null))
         this.state.markers = []
+
         let marker;
 
         malls.forEach(mall => {
@@ -38,8 +40,7 @@ class Map extends Component {
                 gmapId: mall.gmapId
             })
 
-            // marker.addListener('click', () => this.recenterMap(mall.coor))
-
+            marker.addListener('click', () => this.props.showInfo(mall))
 
             this.state.markers.push(marker)
         })
@@ -52,7 +53,7 @@ class Map extends Component {
 
     componentDidUpdate(prevProps, prevState) {
 
-        if(this.state.google !== prevState.google) {
+        if (this.state.google !== prevState.google) {
             this.updateMarkers(this.props.filteredMalls)
         }
 
@@ -60,15 +61,18 @@ class Map extends Component {
             this.updateMarkers(this.props.filteredMalls)
         }
 
+        this.state.markers.map(marker => marker.setAnimation(null))
+
         if (this.props.selected !== null) {
 
-            this.state.markers.map(marker => marker.setAnimation(null))
-
             const activeMarkerIndex = this.state.markers.map(marker => marker.gmapId).indexOf(this.props.selected.gmapId)
-
             this.state.markers[activeMarkerIndex].setAnimation(this.state.google.Animation.BOUNCE)
 
-            // this.recenterMap(this.props.selected.coor)
+            this.recenterMap(this.props.selected.coor)
+        } else if (this.state.google !== null && this.props.selected === null) {
+
+            this.state.map.setZoom(11)
+            this.state.map.setCenter({ lat: 30.0444, lng: 31.2357 })
         }
 
     }

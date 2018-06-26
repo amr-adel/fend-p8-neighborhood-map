@@ -29,7 +29,10 @@ class App extends Component {
     }
 
     updateQuery(query) {
-        this.setState({ filteredMalls: this.state.malls.filter(mall => mall.name.toLowerCase().indexOf(query.trim().toLowerCase()) !== -1), selected: null })
+        this.setState({
+            filteredMalls: this.state.malls.filter(mall => mall.name.toLowerCase().indexOf(query.trim().toLowerCase()) !== -1),
+            selected: null
+        })
     }
 
     showInfo = function (mall) {
@@ -39,8 +42,20 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <ListPlaces filter={this.updateQuery} showInfo={this.showInfo} filteredMalls={this.state.filteredMalls} />
-                <Map filteredMalls={this.state.filteredMalls} selected={this.state.selected} />
+
+                <ListPlaces
+                    filter={this.updateQuery}
+                    showInfo={this.showInfo}
+                    selected={this.state.selected}
+                    filteredMalls={this.state.filteredMalls}
+                />
+
+                <Map
+                    filteredMalls={this.state.filteredMalls}
+                    showInfo={this.showInfo}
+                    selected={this.state.selected}
+                />
+
             </div>
         );
     }
