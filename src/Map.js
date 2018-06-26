@@ -20,7 +20,7 @@ class Map extends Component {
                 this.setState({ map: map, google: window.google.maps })
 
             }
-            else console.log('Can\'t reach Google Maps')
+            else console.log('Can\'t load Google Maps')
         }
     }
 
@@ -35,7 +35,7 @@ class Map extends Component {
                 position: mall.coor,
                 animation: this.state.google.Animation.DROP,
                 map: this.state.map,
-                id: mall.gmapId
+                gmapId: mall.gmapId
             })
 
             // marker.addListener('click', () => this.recenterMap(mall.coor))
@@ -50,21 +50,31 @@ class Map extends Component {
         this.state.map.setCenter(coor)
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState) {
+
+        if(this.state.google !== prevState.google) {
+            this.updateMarkers(this.props.filteredMalls)
+        }
+
+        if (this.state.google !== null && this.props.filteredMalls.length !== prevProps.filteredMalls.length) {
+            this.updateMarkers(this.props.filteredMalls)
+        }
+
         if (this.props.selected !== null) {
-            const activeMarkerIndex = this.state.markers.map(marker => marker.id).indexOf(this.props.selected.gmapId)
+
+            this.state.markers.map(marker => marker.setAnimation(null))
+
+            const activeMarkerIndex = this.state.markers.map(marker => marker.gmapId).indexOf(this.props.selected.gmapId)
 
             this.state.markers[activeMarkerIndex].setAnimation(this.state.google.Animation.BOUNCE)
 
-            this.recenterMap(this.props.selected.coor)
+            // this.recenterMap(this.props.selected.coor)
         }
+
     }
 
     render() {
 
-        if (this.state.google !== null) {
-            this.updateMarkers(this.props.filteredMalls)
-        }
 
         return (
             <div id='map'>

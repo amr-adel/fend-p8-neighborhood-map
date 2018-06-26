@@ -5,6 +5,7 @@
   --brown: #735e59;
   --brown-l: #e6d7c5;
   --white: #fff7e8;
+  --sidebar-width: 25vw;
 }
 
 *,
@@ -25,7 +26,7 @@ html {
 
 .sidebar {
   background-color: var(--red);
-  width: 30rem;
+  width: var(--sidebar-width);
   height: 100vh;
   padding: 1rem;
   text-align: center;
@@ -113,7 +114,7 @@ html {
 
 .footer {
   height: 4.2rem;
-  width: 30rem;
+  width: var(--sidebar-width);
   margin-left: -1rem;
   background-color: var(--brown);
 }
@@ -126,5 +127,5 @@ html {
   position: absolute;
   right: 0;
   top: 0;
-  left: 30rem;
+  left: var(--sidebar-width);
 }
