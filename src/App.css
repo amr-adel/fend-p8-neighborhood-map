@@ -28,7 +28,7 @@ html {
   background-color: var(--red);
   width: var(--sidebar-width);
   height: 100vh;
-  padding: 1rem;
+  padding: 1rem 0;
   text-align: center;
   float: left;
 
@@ -40,7 +40,7 @@ html {
 .header {
   border-bottom: 1px solid var(--white);
   height: 4.8rem;
-  margin-bottom: 2rem;
+  margin: 0 1rem 2rem;
 }
 
 .brand h1 {
@@ -57,6 +57,7 @@ html {
   border: none;
   border-radius: 3px;
   padding: 1rem 2rem;
+  margin: 0 1rem 2rem;
   font-size: 1.6rem;
   color: var(--brown-l);
   background-color: var(--red-d);
@@ -66,6 +67,7 @@ html {
   margin: auto 0;
   list-style: none;
   overflow: auto;
+  border-top: 1px solid var(--red-d);
 }
 
 .place {
@@ -112,10 +114,36 @@ html {
   z-index: 5;
 }
 
+.name {
+  font-weight: normal;
+}
+
+.details {
+  height: 2rem;
+  display: none;
+  color: var(--brown-l);
+}
+
+.selected {
+  background-color: var(--red-d);
+  border-radius: 3px;
+  padding: 2rem;
+}
+
+.selected .name {
+  font-size: 2rem;
+  border-bottom: 1px solid var(--red);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.selected .details{
+  display: block;
+}
+
 .footer {
   height: 4.2rem;
   width: var(--sidebar-width);
-  margin-left: -1rem;
   background-color: var(--brown);
 }
 
