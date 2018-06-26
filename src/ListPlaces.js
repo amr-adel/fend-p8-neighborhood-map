@@ -42,7 +42,15 @@ class ListPlaces extends Component {
 
             document.getElementById('fs' + this.props.selected.fsId).classList.add('selected')
 
-            this.fetchFourSquare(this.props.selected.fsId)
+            // this.fetchFourSquare(this.props.selected.fsId)
+
+            document.querySelector(`#fs${this.props.selected.fsId} .details`).innerHTML = `
+                <img class="photo" src="https://irs1.4sqi.net/img/general/500x300/63892328_N0A_9qgk0N30lHiqDWIRtNb-0YfO84BIxHc9SP7h4rY.jpg" alt="Alternate text">
+                <div class="rating" style="color: #00B551;">9.3</div>
+                <div class="address">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                <div class="status">Open until 1:00 AM</div>
+                <a class="link" href="https://foursquare.com/v/foursquare-hq/4ab7e57cf964a5205f7b20e3" target="_blank">More on FourSquare</a>
+                `
         }
     }
 
