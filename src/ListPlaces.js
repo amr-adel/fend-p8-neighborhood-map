@@ -20,13 +20,29 @@ class ListPlaces extends Component {
         }
     }
 
+    fetchFourSquare(id) {
+
+        fetch(`https://api.foursquare.com/v2/venues/${id}?client_id=N0UR5Z3XKXDNY4GWMBV4H4J0VZIHDCKLUZIZ0U4RBNLAE1CG&client_secret=LVDZ0NKPQVY1SMUFSVJJT02ARZOJXWUFMIJ1AZ0ACSLMKNHR&v=20180620`)
+        .then(res => res.json())
+        .then(data => this.detailsOutput(data.response))
+        // .then(data => console.log(data.response))
+    }
+
+    detailsOutput(details) {
+        setTimeout(() => {
+            document.querySelector(`#fs${details.venue.id} .details`).innerHTML = details.venue.location.formattedAddress[0]
+        }, 500);
+    }
+
     componentDidUpdate() {
 
         if (this.props.selected !== null) {
 
             this.hideInfo()
 
-            document.getElementById(this.props.selected.gmapId).classList.add('selected')
+            document.getElementById('fs' + this.props.selected.fsId).classList.add('selected')
+
+            this.fetchFourSquare(this.props.selected.fsId)
         }
     }
 
@@ -50,9 +66,9 @@ class ListPlaces extends Component {
                 <ol className="places">
                     {this.props.filteredMalls.map(mall => (
                         <li
-                            key={mall.gmapId}
+                            key={mall.fsId}
                             className="place"
-                            id={mall.gmapId}
+                            id={`fs${mall.fsId}`}
                             onClick={() => this.props.showInfo(mall)}
                         >
 

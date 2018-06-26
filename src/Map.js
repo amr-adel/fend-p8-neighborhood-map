@@ -37,7 +37,7 @@ class Map extends Component {
                 position: mall.coor,
                 animation: this.state.google.Animation.DROP,
                 map: this.state.map,
-                gmapId: mall.gmapId
+                fsId: mall.fsId
             })
 
             marker.addListener('click', () => this.props.showInfo(mall))
@@ -65,7 +65,7 @@ class Map extends Component {
 
         if (this.props.selected !== null) {
 
-            const activeMarkerIndex = this.state.markers.map(marker => marker.gmapId).indexOf(this.props.selected.gmapId)
+            const activeMarkerIndex = this.state.markers.map(marker => marker.fsId).indexOf(this.props.selected.fsId)
             this.state.markers[activeMarkerIndex].setAnimation(this.state.google.Animation.BOUNCE)
 
             this.recenterMap(this.props.selected.coor)
