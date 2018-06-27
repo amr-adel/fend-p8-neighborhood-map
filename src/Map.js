@@ -43,7 +43,7 @@ class Map extends Component {
                 fsId: mall.fsId
             })
 
-            marker.addListener('click', () => this.props.showInfo(mall))
+            marker.addListener('click', () => this.selectMall(mall))
 
             this.state.bounds.extend(mall.coor)
 
@@ -53,6 +53,10 @@ class Map extends Component {
         this.state.map.fitBounds(this.state.bounds)
         this.state.map.setCenter(this.state.bounds.getCenter())
 
+    }
+
+    selectMall(mall) {
+        mall !== this.props.selected ? this.props.selectMall(mall) : false
     }
 
     recenterMap = function (coor) {

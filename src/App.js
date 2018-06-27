@@ -9,7 +9,7 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.updateQuery = this.updateQuery.bind(this)
-        this.showInfo = this.showInfo.bind(this)
+        this.selectMall = this.selectMall.bind(this)
     }
 
     state = {
@@ -24,12 +24,11 @@ class App extends Component {
 
     updateQuery(query) {
         this.setState({
-            filteredMalls: this.state.malls.filter(mall => mall.name.toLowerCase().indexOf(query.trim().toLowerCase()) !== -1),
-            selected: null
+            filteredMalls: this.state.malls.filter(mall => mall.name.toLowerCase().indexOf(query.trim().toLowerCase()) !== -1)
         })
     }
 
-    showInfo = function (mall) {
+    selectMall = function (mall) {
         this.setState({ selected: mall })
     }
 
@@ -39,14 +38,14 @@ class App extends Component {
 
                 <ListPlaces
                     filter={this.updateQuery}
-                    showInfo={this.showInfo}
+                    selectMall={this.selectMall}
                     selected={this.state.selected}
                     filteredMalls={this.state.filteredMalls}
                 />
 
                 <Map
                     filteredMalls={this.state.filteredMalls}
-                    showInfo={this.showInfo}
+                    selectMall={this.selectMall}
                     selected={this.state.selected}
                 />
 

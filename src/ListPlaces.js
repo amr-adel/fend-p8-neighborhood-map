@@ -5,7 +5,7 @@ class ListPlaces extends Component {
     filter(query) {
         this.props.filter(query)
 
-        this.hideInfo()
+        this.props.selectMall(null)
     }
 
     hideInfo() {
@@ -42,16 +42,31 @@ class ListPlaces extends Component {
 
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
 
-        if (this.props.selected !== null) {
-
+        if (prevProps.selected === this.props.selected) {
+            return false
+        } else {
             this.hideInfo()
 
-            document.getElementById('fs' + this.props.selected.fsId).classList.add('selected')
+            if (this.props.selected !== null) {
 
-            this.fetchFourSquare(this.props.selected.fsId)
+                this.fetchFourSquare(this.props.selected.fsId)
 
+                document.getElementById('fs' + this.props.selected.fsId).classList.add('selected')
+            }
+        }
+    }
+
+
+    selectMall(mall, target) {
+
+        if (target === 'SPAN') {
+            this.props.selectMall(null)
+        } else if (this.props.selected === mall) {
+            return false
+        } else {
+            this.props.selectMall(mall)
         }
     }
 
@@ -78,10 +93,11 @@ class ListPlaces extends Component {
                             key={mall.fsId}
                             className="place"
                             id={`fs${mall.fsId}`}
-                            onClick={() => this.props.showInfo(mall)}
+                            onClick={(e) => this.selectMall(mall, e.target.tagName)}
                         >
 
                             <h4 className="name">{mall.name}</h4>
+                            <span className="close">X</span>
                             <div className="details">Loading mall details...</div>
 
                         </li>
