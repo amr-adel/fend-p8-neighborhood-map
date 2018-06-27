@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListPlaces from "./ListPlaces";
+import Data from "./Data";
 import Map from "./Map";
 import './App.css';
 
@@ -18,14 +19,7 @@ class App extends Component {
     };
 
     componentDidMount() {
-        this.fetchPlaces();
-    }
-
-    fetchPlaces() {
-        fetch('./places.json')
-            .then(res => res.json())
-            .then(data => this.setState({ malls: data.malls, filteredMalls: data.malls }))
-            .catch(err => console.log(err));
+        this.setState({ malls: Data.malls, filteredMalls: Data.malls })
     }
 
     updateQuery(query) {

@@ -5,6 +5,7 @@ class Map extends Component {
 
     state = {
         map: null,
+        bounds: null,
         markers: [],
         google: null
     }
@@ -17,10 +18,12 @@ class Map extends Component {
                     center: { lat: 30.0444, lng: 31.2357 }
                 });
 
-                this.setState({ map: map, google: window.google.maps })
+                var bounds = new window.google.maps.LatLngBounds();
+
+                this.setState({ map: map, bounds: bounds, google: window.google.maps })
 
             }
-            else console.log('Can\'t load Google Maps')
+            else alert(`Unable to Load Google Maps`)
         }
     }
 
@@ -42,12 +45,18 @@ class Map extends Component {
 
             marker.addListener('click', () => this.props.showInfo(mall))
 
+            this.state.bounds.extend(mall.coor)
+
             this.state.markers.push(marker)
         })
+
+        this.state.map.fitBounds(this.state.bounds)
+        this.state.map.setCenter(this.state.bounds.getCenter())
+
     }
 
     recenterMap = function (coor) {
-        this.state.map.setZoom(13)
+        this.state.map.setZoom(14)
         this.state.map.setCenter(coor)
     }
 
@@ -71,8 +80,8 @@ class Map extends Component {
             this.recenterMap(this.props.selected.coor)
         } else if (this.state.google !== null && this.props.selected === null) {
 
-            this.state.map.setZoom(11)
-            this.state.map.setCenter({ lat: 30.0444, lng: 31.2357 })
+            this.state.map.fitBounds(this.state.bounds)
+            this.state.map.setCenter(this.state.bounds.getCenter())
         }
 
     }
