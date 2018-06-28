@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Data from "./Data";
 import scriptLoader from 'react-async-script-loader'
 
 class Map extends Component {
@@ -15,7 +16,8 @@ class Map extends Component {
             if (isScriptLoadSucceed) {
                 var map = new window.google.maps.Map(document.getElementById('map'), {
                     zoom: 11,
-                    center: { lat: 30.0444, lng: 31.2357 }
+                    center: { lat: 30.0444, lng: 31.2357 },
+                    styles: Data.mapStyles
                 });
 
                 var bounds = new window.google.maps.LatLngBounds();
@@ -60,7 +62,7 @@ class Map extends Component {
     }
 
     recenterMap = function (coor) {
-        this.state.map.setZoom(14)
+        this.state.map.setZoom(15)
         this.state.map.setCenter(coor)
     }
 
