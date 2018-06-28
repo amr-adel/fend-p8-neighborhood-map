@@ -17,7 +17,8 @@ class Map extends Component {
                 var map = new window.google.maps.Map(document.getElementById('map'), {
                     zoom: 11,
                     center: { lat: 30.0444, lng: 31.2357 },
-                    styles: Data.mapStyles
+                    styles: Data.mapStyles,
+                    disableDefaultUI: true
                 });
 
                 var bounds = new window.google.maps.LatLngBounds();
@@ -78,7 +79,7 @@ class Map extends Component {
 
         this.state.markers.map(marker => marker.setAnimation(null))
 
-        if (this.props.selected !== null) {
+        if (this.props.selected !== null && this.state.markers) {
 
             const activeMarkerIndex = this.state.markers.map(marker => marker.fsId).indexOf(this.props.selected.fsId)
             this.state.markers[activeMarkerIndex].setAnimation(this.state.google.Animation.BOUNCE)

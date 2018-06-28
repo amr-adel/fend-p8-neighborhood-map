@@ -20,6 +20,7 @@ class ListPlaces extends Component {
         fetch(`https://api.foursquare.com/v2/venues/${id}?client_id=N0UR5Z3XKXDNY4GWMBV4H4J0VZIHDCKLUZIZ0U4RBNLAE1CG&client_secret=LVDZ0NKPQVY1SMUFSVJJT02ARZOJXWUFMIJ1AZ0ACSLMKNHR&v=20180620`)
             .then(res => res.json())
             .then(data => this.detailsOutput(data))
+            .catch(err => alert(`Unable to get data from FourSquare (${err})`))
     }
 
     detailsOutput(details) {
@@ -27,14 +28,15 @@ class ListPlaces extends Component {
 
             const mall = details.response.venue
 
-            setTimeout(() => {
-                document.querySelector(`#fs${mall.id} .details`).innerHTML = `
+            const markup = `
                 <img class="photo" src="${mall.bestPhoto.prefix}500x300${mall.bestPhoto.suffix}" alt="${mall.name}">
                 <div class="rating" style="color: #${mall.ratingColor};">${mall.rating}</div>
                 <div class="address"><svg><use xlink:href="./icons.svg#marker"></use></svg>${mall.location.formattedAddress[0]}</div>
                 <div class="status"><svg><use xlink:href="./icons.svg#like"></use></svg>Liked by ${mall.likes.count} user</div>
                 <a class="link" href="${mall.canonicalUrl}" target="_blank" rel="noopener noreferrer">More on FourSquare<svg><use xlink:href="./icons.svg#link"></use></svg></a>
-                `
+            `
+            setTimeout(() => {
+                document.querySelector(`#fs${mall.id} .details`).innerHTML = markup
             }, 500);
         } else {
             alert(`Unable to get details from FourSquare (${details.meta.errorDetail})`)
@@ -80,7 +82,7 @@ class ListPlaces extends Component {
             <section className="sidebar">
                 <header className="header">
                     <div className="brand">
-                        <h1><svg className="logo"><use xlinkHref="./icons.svg#bag"></use></svg>Eg-<span className="blue">Shopping</span></h1>
+                        <h1><svg className="logo"><use xlinkHref="./icons.svg#bag"></use></svg>Eg<span className="blue">Shopping</span></h1>
                     </div>
                 </header>
 
