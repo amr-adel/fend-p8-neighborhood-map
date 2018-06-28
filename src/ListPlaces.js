@@ -31,9 +31,9 @@ class ListPlaces extends Component {
                 document.querySelector(`#fs${mall.id} .details`).innerHTML = `
                 <img class="photo" src="${mall.bestPhoto.prefix}500x300${mall.bestPhoto.suffix}" alt="${mall.name}">
                 <div class="rating" style="color: #${mall.ratingColor};">${mall.rating}</div>
-                <div class="address">${mall.location.formattedAddress[0]}</div>
-                <div class="status">Liked by ${mall.likes.count} user</div>
-                <a class="link" href="${mall.canonicalUrl}" target="_blank">More on FourSquare</a>
+                <div class="address"><svg><use xlink:href="./icons.svg#marker"></use></svg>${mall.location.formattedAddress[0]}</div>
+                <div class="status"><svg><use xlink:href="./icons.svg#like"></use></svg>Liked by ${mall.likes.count} user</div>
+                <a class="link" href="${mall.canonicalUrl}" target="_blank" rel="noopener noreferrer">More on FourSquare<svg><use xlink:href="./icons.svg#link"></use></svg></a>
                 `
             }, 500);
         } else {
@@ -70,13 +70,17 @@ class ListPlaces extends Component {
         }
     }
 
+    icon(icon) {
+        return `<svg><use xlink:href="../src/icons.svg#${icon}"></use></svg>`
+    }
+
     render() {
 
         return (
             <section className="sidebar">
                 <header className="header">
                     <div className="brand">
-                        <h1>Eg-Shopping</h1>
+                        <h1><svg className="logo"><use xlinkHref="./icons.svg#bag"></use></svg>Eg-<span className="blue">Shopping</span></h1>
                     </div>
                 </header>
 
@@ -104,7 +108,30 @@ class ListPlaces extends Component {
                     ))}
                 </ol>
 
-                <footer className="footer">FOOTER</footer>
+                <footer className="footer" id="footer">
+                    <div className="footer__follow">
+                        <a href="https://github.com/amr-adel" target="_blank" rel="noopener noreferrer">
+                            <svg>
+                                <use xlinkHref="./icons.svg#github"></use>
+                            </svg>
+                        </a>
+                        <a href="https://codepen.io/amr-adel/" target="_blank" rel="noopener noreferrer">
+                            <svg>
+                                <use xlinkHref="./icons.svg#codepen"></use>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/amr-abdelmoez/" target="_blank" rel="noopener noreferrer">
+                            <svg>
+                                <use xlinkHref="./icons.svg#linkedin"></use>
+                            </svg>
+                        </a>
+                        <a href="https://www.freecodecamp.org/amr-adel" target="_blank" rel="noopener noreferrer">
+                            <svg>
+                                <use xlinkHref="./icons.svg#freecodecamp"></use>
+                            </svg>
+                        </a >
+                    </div >
+                </footer >
 
             </section>
         );

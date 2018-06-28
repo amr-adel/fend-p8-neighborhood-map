@@ -56,7 +56,7 @@ class Map extends Component {
     }
 
     selectMall(mall) {
-        mall !== this.props.selected ? this.props.selectMall(mall) : false
+        if (mall !== this.props.selected) this.props.selectMall(mall) 
     }
 
     recenterMap = function (coor) {
