@@ -73,6 +73,10 @@ html {
     text-align: center;
 }
 
+.filter:focus {
+    outline: 1px solid var(--brown-l);
+}
+
 ::placeholder {
     color: var(--brown-l);
 }

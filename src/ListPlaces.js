@@ -90,6 +90,7 @@ class ListPlaces extends Component {
                     type="text"
                     className="filter"
                     placeholder="Filter Places"
+                    aria-label="Filter"
                     onChange={e => this.filter(e.target.value)}
                 />
 
@@ -98,12 +99,15 @@ class ListPlaces extends Component {
                         <li
                             key={mall.fsId}
                             className="place"
+                            role="button"
+                            tabIndex="0"
                             id={`fs${mall.fsId}`}
                             onClick={(e) => this.selectMall(mall, e.target.tagName)}
+                            onKeyPress={(e) => this.selectMall(mall, e.target.tagName)}
                         >
 
                             <h4 className="name">{mall.name}</h4>
-                            <span className="close">X</span>
+                            <span className="close" aria-label="Close" role="button" tabIndex="0" >X</span>
                             <div className="details">Loading mall details...</div>
 
                         </li>

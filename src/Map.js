@@ -97,7 +97,7 @@ class Map extends Component {
 
 
         return (
-            <div id='map'>
+            <div id='map' role="application" aria-roledescription="map for malls list">
                 Loading map...
             </div>
         )
