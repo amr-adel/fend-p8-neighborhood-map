@@ -34,6 +34,7 @@ class Map extends Component {
     updateMarkers = function (malls) {
 
         this.state.markers.map(marker => marker.setMap(null))
+        // eslint-disable-next-line
         this.state.markers = []
 
         let marker;
