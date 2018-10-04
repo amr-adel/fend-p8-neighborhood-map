@@ -47,13 +47,13 @@ html {
 
 .logo {
     fill: var(--blue);
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.2rem;
+    height: 2.2rem;
     margin-right: 1rem;
 }
 
 .brand h1 {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     text-transform: uppercase;
     color: var(--brown-l);
     font-weight: normal;

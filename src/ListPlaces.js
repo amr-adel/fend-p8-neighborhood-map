@@ -82,7 +82,7 @@ class ListPlaces extends Component {
             <section className="sidebar">
                 <header className="header">
                     <div className="brand">
-                        <h1><svg className="logo"><use xlinkHref="./icons.svg#bag"></use></svg>Eg<span className="blue">Shopping</span></h1>
+                        <h1><svg className="logo"><use xlinkHref="./icons.svg#bag"></use></svg>Malls<span className="blue"> Of </span>Cairo</h1>
                     </div>
                 </header>
 
