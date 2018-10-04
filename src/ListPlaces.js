@@ -95,7 +95,7 @@ class ListPlaces extends Component {
                 />
 
                 <ol className="places">
-                    {this.props.filteredMalls.map(mall => (
+                    {this.props.filteredMalls.sort((a, b) => a.name > b.name).map(mall => (
                         <li
                             key={mall.fsId}
                             className="place"
