@@ -1,8 +1,8 @@
-# Neighborhood Map (React)
+# Malls Of Cairo | FEND p.8 Neighborhood Map
 
 This is my entry for project 8 (*Neighborhood Map*) from Udacity's  [Front-End Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001) program.
 
-[![Neighborhood Map (React)](public/demo.jpg "Neighborhood Map (React)")](https://amr-adel.github.io/fend-p8-neighborhood-map/)
+[![Malls Of Cairo](public/demo.jpg "Malls Of Cairo")](https://amr-adel.github.io/malls-of-cairo/)
 
 ---
 
@@ -62,23 +62,23 @@ This is my entry for project 8 (*Neighborhood Map*) from Udacity's  [Front-End N
 
 ### To see it in action
 ### Visit live demo
-At [Neighborhood Map (React)](https://amr-adel.github.io/fend-p8-neighborhood-map/)
+At [Malls Of Cairo](https://amr-adel.github.io/malls-of-cairo/)
 
 ---
 #### Clone repository
 via `HTTPS` 
 ```
-https://github.com/amr-adel/fend-p8-neighborhood-map.git
+https://github.com/amr-adel/malls-of-cairo.git
 ```
 Or via `SSH` 
 ```
-git@github.com:amr-adel/fend-p8-neighborhood-map.git
+git@github.com:amr-adel/malls-of-cairo.git
 ```
 
 ---
 
 #### Download repository
-As a ZIP archive [Neighborhood Map (React)](https://github.com/amr-adel/fend-p8-neighborhood-map/archive/master.zip)
+As a ZIP archive [Malls Of Cairo](https://github.com/amr-adel/malls-of-cairo/archive/master.zip)
 
 1- install all project dependencies with `npm install`
 2- start the development server with `npm run start`
