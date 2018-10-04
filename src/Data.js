@@ -88,6 +88,96 @@ var Data = {
                 "lng": 31.42453690000002
             },
             "fsId": "4fb8a611e4b04abc0c11d4bc"
+        },
+        {
+            "name": "Genena Mall",
+            "gmapId": "ChIJa_i0F2g-WBQRr7xwkbhUzpw",
+            "coor": {
+                "lat": 30.0610462,
+                "lng": 31.3299931
+            },
+            "fsId": "4c4bedd8712ac9282981976d"
+        },
+        {
+            "name": "Arkadia Mall",
+            "gmapId": "ChIJNXz3ZvpAWBQRtbdRovhD6aQ",
+            "coor": {
+                "lat": 30.069613349999997,
+                "lng": 31.227202691153604
+            },
+            "fsId": "50dc283de4b057fecdd1e610"
+        },
+        {
+            "name": "Tiba Outlet Mall",
+            "gmapId": "ChIJj1eMyEE-WBQRqOFFesZ-c7o",
+            "coor": {
+                "lat": 30.06734595,
+                "lng": 31.32987509169704
+            },
+            "fsId": "4e31e68cb0fbb985a508ee47"
+        },
+        {
+            "name": "Cairo Mall",
+            "gmapId": "ChIJAQAAAJxFWBQRCmuO5k3gAb8",
+            "coor": {
+                "lat": 29.9986787,
+                "lng": 31.1735371
+            },
+            "fsId": "4e725f2f183821b8cc96fdac"
+        },
+        {
+            "name": "Talaat Harb Mall",
+            "gmapId": "ChIJb1BvepVAWBQRY6OnzlEYbZI",
+            "coor": {
+                "lat": 30.05016095,
+                "lng": 31.239893859811517
+            },
+            "fsId": "4ec14a6b5c5c3d470d610538"
+        },
+        {
+            "name": "City Center Mall",
+            "gmapId": "ChIJw4AoL3I-WBQRzql0xs_BnNs",
+            "coor": {
+                "lat": 30.0683421,
+                "lng": 31.3446867
+            },
+            "fsId": "4bd9d7493904a5936cd4439e"
+        },
+        {
+            "name": "Maadi City Center",
+            "gmapId": "ChIJa31qzKhHWBQR9KlOjzqX0iM",
+            "coor": {
+                "lat": 29.9825607,
+                "lng": 31.3162377
+            },
+            "fsId": "4c421543a48d9c7418c70c40"
+        },
+        {
+            "name": "Maadi Grand Mall",
+            "gmapId": "ChIJESyQo3M4WBQRz5lXBs5ZO5o",
+            "coor": {
+                "lat": 29.964932,
+                "lng": 31.2679123
+            },
+            "fsId": "4bcb02fdcc8cd13ab88abecf"
+        },
+        {
+            "name": "Dandy Mall",
+            "gmapId": "ChIJ3QwL3qNbWBQR9nQCXPvj5Z0",
+            "coor": {
+                "lat": 30.0633801,
+                "lng": 31.0255163
+            },
+            "fsId": "4b743b8bf964a520b9ce2de3"
+        },
+        {
+            "name": "Zizinia Mall",
+            "gmapId": "ChIJBYbSBnhGWBQRlRQgkTWllls",
+            "coor": {
+                "lat": 29.9981988,
+                "lng": 31.1690108
+            },
+            "fsId": "55081363498ed14f195a8b16"
         }
     ],
     mapStyles: [{
