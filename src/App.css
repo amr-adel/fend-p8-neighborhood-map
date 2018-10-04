@@ -293,10 +293,6 @@ body {
     transition: fill .2s ease-out;
 }
 
-.footer__follow svg:last-child {
-    width: 2.1rem;
-}
-
 .footer__follow a:hover svg {
     fill: var(--brown-l);
 }

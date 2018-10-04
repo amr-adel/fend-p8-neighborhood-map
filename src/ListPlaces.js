@@ -116,14 +116,14 @@ class ListPlaces extends Component {
 
                 <footer className="footer" id="footer">
                     <div className="footer__follow">
-                        <a href="https://github.com/amr-adel" target="_blank" rel="noopener noreferrer">
+                        <a href="https://twitter.com/fullstackamr/" target="_blank" rel="noopener noreferrer">
+                            <svg>
+                                <use xlinkHref="./icons.svg#twitter"></use>
+                            </svg>
+                        </a >
+                        <a href="https://github.com/amr-adel/" target="_blank" rel="noopener noreferrer">
                             <svg>
                                 <use xlinkHref="./icons.svg#github"></use>
-                            </svg>
-                        </a>
-                        <a href="https://codepen.io/amr-adel/" target="_blank" rel="noopener noreferrer">
-                            <svg>
-                                <use xlinkHref="./icons.svg#codepen"></use>
                             </svg>
                         </a>
                         <a href="https://www.linkedin.com/in/amr-abdelmoez/" target="_blank" rel="noopener noreferrer">
@@ -131,11 +131,11 @@ class ListPlaces extends Component {
                                 <use xlinkHref="./icons.svg#linkedin"></use>
                             </svg>
                         </a>
-                        <a href="https://www.freecodecamp.org/amr-adel" target="_blank" rel="noopener noreferrer">
+                        <a href="https://codepen.io/amr-adel/" target="_blank" rel="noopener noreferrer">
                             <svg>
-                                <use xlinkHref="./icons.svg#freecodecamp"></use>
+                                <use xlinkHref="./icons.svg#codepen"></use>
                             </svg>
-                        </a >
+                        </a>
                     </div >
                 </footer >
 
