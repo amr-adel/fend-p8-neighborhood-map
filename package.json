@@ -2,20 +2,23 @@
   "name": "malls-of-cairo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://amr-adel.github.io/malls-of-cairo/",
+  "homepage": "https://malls-of-cairo.herokuapp.com/",
   "dependencies": {
     "react": "^16.4.1",
     "react-async-script-loader": "^0.3.0",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "serve": "^10.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+	"start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+	"heroku-postbuild": "npm run build"
   },
   "devDependencies": {
     "gh-pages": "^1.2.0"
