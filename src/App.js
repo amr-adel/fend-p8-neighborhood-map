@@ -19,7 +19,14 @@ class App extends Component {
     };
 
     componentDidMount() {
-        this.setState({ malls: Data.malls, filteredMalls: Data.malls })
+        this.setState({
+            malls: Data.malls.sort((a, b) => {
+                // https://stackoverflow.com/questions/48111425/sort-objects-in-an-array-alphabetically-based-on-one-property
+                let textA = a.name.toUpperCase();
+                let textB = b.name.toUpperCase();
+                return textA.localeCompare(textB);
+            }), filteredMalls: Data.malls
+        })
     }
 
     updateQuery(query) {

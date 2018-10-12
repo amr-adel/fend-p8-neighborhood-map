@@ -95,23 +95,28 @@ class ListPlaces extends Component {
                 />
 
                 <ol className="places">
-                    {this.props.filteredMalls.sort((a, b) => a.name > b.name).map(mall => (
-                        <li
-                            key={mall.fsId}
-                            className="place"
-                            role="button"
-                            tabIndex="0"
-                            id={`fs${mall.fsId}`}
-                            onClick={(e) => this.selectMall(mall, e.target.tagName)}
-                            onKeyPress={(e) => this.selectMall(mall, e.target.tagName)}
-                        >
+                    {this.props.filteredMalls.length > 0 ?
+                        this.props.filteredMalls.map(mall => (
+                            <li
+                                key={mall.fsId}
+                                className="place"
+                                role="button"
+                                tabIndex="0"
+                                id={`fs${mall.fsId}`}
+                                onClick={(e) => this.selectMall(mall, e.target.tagName)}
+                                onKeyPress={(e) => this.selectMall(mall, e.target.tagName)}
+                            >
 
-                            <h4 className="name">{mall.name}</h4>
-                            <span className="close" aria-label="Close" role="button" tabIndex="0" >X</span>
-                            <div className="details">Loading mall details...</div>
+                                <h4 className="name">{mall.name}</h4>
+                                <span className="close" aria-label="Close" role="button" tabIndex="0" >X</span>
+                                <div className="details">Loading mall details...</div>
 
+                            </li>
+                        ))
+                        : <li className="place" key="no-match">
+                            <h4 className="name">Unfortunately, your keyword doesn't match any of the listed malls.</h4>
                         </li>
-                    ))}
+                    }
                 </ol>
 
                 <footer className="footer" id="footer">
