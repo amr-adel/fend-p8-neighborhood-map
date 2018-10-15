@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 class ListPlaces extends Component {
 
     filter(query) {
-        this.props.filter(query)
+        const { filter, selectMall } = this.props
 
-        this.props.selectMall(null)
+        filter(query)
+
+        selectMall(null)
     }
 
     hideInfo() {
@@ -26,18 +28,18 @@ class ListPlaces extends Component {
     detailsOutput(details) {
         if (details.response.venue) {
 
-            const mall = details.response.venue
+            const { bestPhoto, name, ratingColor, rating, location, likes, canonicalUrl, id } = details.response.venue
 
             const markup = `
-                <img class="photo" src="${mall.bestPhoto.prefix}500x300${mall.bestPhoto.suffix}" alt="${mall.name}">
-                <div class="rating" style="color: #${mall.ratingColor};">${mall.rating}</div>
-                <div class="address"><svg><use xlink:href="./icons.svg#marker"></use></svg>${mall.location.formattedAddress[0]}</div>
-                <div class="status"><svg><use xlink:href="./icons.svg#like"></use></svg>Liked by ${mall.likes.count} user</div>
-                <a class="link" href="${mall.canonicalUrl}" target="_blank" rel="noopener noreferrer">More on FourSquare<svg><use xlink:href="./icons.svg#link"></use></svg></a>
+                <img class="photo" src="${bestPhoto.prefix}500x300${bestPhoto.suffix}" alt="${name}">
+                <div class="rating" style="color: #${ratingColor};">${rating}</div>
+                <div class="address"><svg><use xlink:href="./icons.svg#marker"></use></svg>${location.formattedAddress[0]}</div>
+                <div class="status"><svg><use xlink:href="./icons.svg#like"></use></svg>Liked by ${likes.count} user</div>
+                <a class="link" href="${canonicalUrl}" target="_blank" rel="noopener noreferrer">More on FourSquare<svg><use xlink:href="./icons.svg#link"></use></svg></a>
             `
-            setTimeout(() => {
-                document.querySelector(`#fs${mall.id} .details`).innerHTML = markup
-            }, 500);
+
+            document.querySelector(`#fs${id} .details`).innerHTML = markup
+
         } else {
             alert(`Unable to get details from FourSquare (${details.meta.errorDetail})`)
         }
@@ -45,38 +47,37 @@ class ListPlaces extends Component {
     }
 
     componentDidUpdate(prevProps) {
+        const { selected } = this.props
 
-        if (prevProps.selected === this.props.selected) {
+        if (prevProps.selected === selected) {
             return false
         } else {
             this.hideInfo()
 
-            if (this.props.selected !== null) {
+            if (selected !== null) {
 
-                this.fetchFourSquare(this.props.selected.fsId)
+                this.fetchFourSquare(selected.fsId)
 
-                document.getElementById('fs' + this.props.selected.fsId).classList.add('selected')
+                document.getElementById('fs' + selected.fsId).classList.add('selected')
             }
         }
     }
 
 
     selectMall(mall, target) {
+        const { selected, selectMall } = this.props
 
         if (target === 'SPAN') {
-            this.props.selectMall(null)
-        } else if (this.props.selected === mall) {
+            selectMall(null)
+        } else if (selected === mall) {
             return false
         } else {
-            this.props.selectMall(mall)
+            selectMall(mall)
         }
     }
 
-    icon(icon) {
-        return `<svg><use xlink:href="../src/icons.svg#${icon}"></use></svg>`
-    }
-
     render() {
+        const { filteredMalls } = this.props
 
         return (
             <section className="sidebar">
@@ -95,8 +96,8 @@ class ListPlaces extends Component {
                 />
 
                 <ol className="places">
-                    {this.props.filteredMalls.length > 0 ?
-                        this.props.filteredMalls.map(mall => (
+                    {filteredMalls.length > 0 ?
+                        filteredMalls.map(mall => (
                             <li
                                 key={mall.fsId}
                                 className="place"

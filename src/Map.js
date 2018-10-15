@@ -32,35 +32,37 @@ class Map extends Component {
 
 
     updateMarkers = function (malls) {
+        const { markers, google, map, bounds } = this.state
 
-        this.state.markers.map(marker => marker.setMap(null))
-        // eslint-disable-next-line
-        this.state.markers = []
+        markers.map(marker => marker.setMap(null))
 
         let marker;
+        let newMarkers = [];
 
         malls.forEach(mall => {
-            marker = new this.state.google.Marker({
+            marker = new google.Marker({
                 position: mall.coor,
-                animation: this.state.google.Animation.DROP,
-                map: this.state.map,
+                animation: google.Animation.DROP,
+                map: map,
                 fsId: mall.fsId
             })
 
             marker.addListener('click', () => this.selectMall(mall))
 
-            this.state.bounds.extend(mall.coor)
+            bounds.extend(mall.coor)
 
-            this.state.markers.push(marker)
+            newMarkers.push(marker)
         })
 
-        this.state.map.fitBounds(this.state.bounds)
-        this.state.map.setCenter(this.state.bounds.getCenter())
+        this.setState({ markers: newMarkers })
+
+        map.fitBounds(bounds)
+        map.setCenter(bounds.getCenter())
 
     }
 
     selectMall(mall) {
-        if (mall !== this.props.selected) this.props.selectMall(mall) 
+        if (mall !== this.props.selected) this.props.selectMall(mall)
     }
 
     recenterMap = function (coor) {
@@ -69,27 +71,29 @@ class Map extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        const { markers, google, map, bounds } = this.state
+        const { selected, filteredMalls } = this.props
 
-        if (this.state.google !== prevState.google) {
-            this.updateMarkers(this.props.filteredMalls)
+        if (google !== prevState.google) {
+            this.updateMarkers(filteredMalls)
         }
 
-        if (this.state.google !== null && this.props.filteredMalls.length !== prevProps.filteredMalls.length) {
-            this.updateMarkers(this.props.filteredMalls)
+        if (google !== null && filteredMalls.length !== prevProps.filteredMalls.length) {
+            this.updateMarkers(filteredMalls)
         }
 
-        this.state.markers.map(marker => marker.setAnimation(null))
+        markers.map(marker => marker.setAnimation(null))
 
-        if (this.props.selected !== null && this.state.markers) {
+        if (selected !== null && markers) {
 
-            const activeMarkerIndex = this.state.markers.map(marker => marker.fsId).indexOf(this.props.selected.fsId)
-            this.state.markers[activeMarkerIndex].setAnimation(this.state.google.Animation.BOUNCE)
+            const activeMarkerIndex = markers.map(marker => marker.fsId).indexOf(selected.fsId)
+            markers[activeMarkerIndex].setAnimation(google.Animation.BOUNCE)
 
-            this.recenterMap(this.props.selected.coor)
-        } else if (this.state.google !== null && this.props.selected === null) {
+            this.recenterMap(selected.coor)
+        } else if (google !== null && selected === null) {
 
-            this.state.map.fitBounds(this.state.bounds)
-            this.state.map.setCenter(this.state.bounds.getCenter())
+            map.fitBounds(bounds)
+            map.setCenter(bounds.getCenter())
         }
 
     }
