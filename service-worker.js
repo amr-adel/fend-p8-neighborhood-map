@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/malls-of-cairo/precache-manifest.a7b86236dc1467c3cf759df232310ed4.js"
+  "/malls-of-cairo/precache-manifest.734e85020609485c2db1c03aaea03535.js"
 );
 
 self.addEventListener('message', (event) => {
