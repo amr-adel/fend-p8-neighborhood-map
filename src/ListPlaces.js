@@ -31,7 +31,7 @@ class ListPlaces extends Component {
             const { bestPhoto, name, ratingColor, rating, location, likes, canonicalUrl, id } = details.response.venue
 
             const markup = `
-                <img class="photo" src="${bestPhoto.prefix}500x300${bestPhoto.suffix}" alt="${name}">
+                <img class="photo" src="${bestPhoto.prefix}500x300${bestPhoto.suffix}" alt="${name}" onload="this.parentElement.parentElement.scrollIntoView()">
                 <div class="rating" style="color: #${ratingColor};">${rating}</div>
                 <div class="address"><svg><use xlink:href="./icons.svg#marker"></use></svg>${location.formattedAddress[0]}</div>
                 <div class="status"><svg><use xlink:href="./icons.svg#like"></use></svg>Liked by ${likes.count} user</div>
