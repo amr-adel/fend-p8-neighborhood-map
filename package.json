@@ -2,6 +2,7 @@
   "name": "malls-of-cairo",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://amr-adel.github.io/malls-of-cairo/",
   "dependencies": {
     "react": "^16.4.1",
     "react-async-script-loader": "^0.3.0",
