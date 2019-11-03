@@ -10,7 +10,7 @@ class Map extends Component {
     google: null
   }
 
-  componentWillReceiveProps({ isScriptLoaded, isScriptLoadSucceed }) {
+  UNSAFE_componentWillReceiveProps({ isScriptLoaded, isScriptLoadSucceed }) {
     if (isScriptLoaded && !this.props.isScriptLoaded) {
       if (isScriptLoadSucceed) {
         var map = new window.google.maps.Map(document.getElementById('map'), {
