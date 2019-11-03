@@ -82,7 +82,6 @@ class Map extends Component {
     if (selected !== null && markers) {
       const activeMarkerIndex = markers.map(marker => marker.id).indexOf(selected.id)
       markers[activeMarkerIndex].setAnimation(google.Animation.BOUNCE)
-      console.log(selected)
 
       this.recenterMap(selected.location)
     } else if (google !== null && selected === null) {

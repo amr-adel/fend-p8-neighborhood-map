@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ListPlaces from './ListPlaces'
-import Data from './Data'
 import Map from './Map'
 import './App.css'
 
@@ -9,13 +8,6 @@ class App extends Component {
     super(props)
 
     this.state = {
-      // malls: Data.malls.sort((a, b) => {
-      //     // https://stackoverflow.com/questions/48111425/sort-objects-in-an-array-alphabetically-based-on-one-property
-      //     let textA = a.name.toUpperCase();
-      //     let textB = b.name.toUpperCase();
-      //     return textA.localeCompare(textB);
-      // }),
-      malls: Data.foursquareMalls.response.venues,
       filteredMalls: [],
       selected: null
     }
@@ -25,9 +17,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      filteredMalls: this.state.malls
-    })
+    fetch(`https://api.foursquare.com/v2/venues/search?near=Cairo&categoryId=4bf58dd8d48988d1fd941735&client_id=N0UR5Z3XKXDNY4GWMBV4H4J0VZIHDCKLUZIZ0U4RBNLAE1CG&client_secret=LVDZ0NKPQVY1SMUFSVJJT02ARZOJXWUFMIJ1AZ0ACSLMKNHR&v=20191020`)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          malls: data.response.venues,
+          filteredMalls: data.response.venues
+        })
+      })
+      .catch(err => alert(`Unable to get data from FourSquare (${err})`))
   }
 
   updateQuery(query) {
