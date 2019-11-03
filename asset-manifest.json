@@ -1,15 +1,22 @@
 {
   "files": {
     "main.css": "/malls-of-cairo/static/css/main.be92bb85.chunk.css",
-    "main.js": "/malls-of-cairo/static/js/main.fc290152.chunk.js",
-    "main.js.map": "/malls-of-cairo/static/js/main.fc290152.chunk.js.map",
-    "runtime~main.js": "/malls-of-cairo/static/js/runtime~main.3c7dd384.js",
-    "runtime~main.js.map": "/malls-of-cairo/static/js/runtime~main.3c7dd384.js.map",
-    "static/js/2.4bdfa218.chunk.js": "/malls-of-cairo/static/js/2.4bdfa218.chunk.js",
-    "static/js/2.4bdfa218.chunk.js.map": "/malls-of-cairo/static/js/2.4bdfa218.chunk.js.map",
+    "main.js": "/malls-of-cairo/static/js/main.39a29ca0.chunk.js",
+    "main.js.map": "/malls-of-cairo/static/js/main.39a29ca0.chunk.js.map",
+    "runtime-main.js": "/malls-of-cairo/static/js/runtime-main.096cc336.js",
+    "runtime-main.js.map": "/malls-of-cairo/static/js/runtime-main.096cc336.js.map",
+    "static/js/2.2e442671.chunk.js": "/malls-of-cairo/static/js/2.2e442671.chunk.js",
+    "static/js/2.2e442671.chunk.js.map": "/malls-of-cairo/static/js/2.2e442671.chunk.js.map",
     "index.html": "/malls-of-cairo/index.html",
-    "precache-manifest.734e85020609485c2db1c03aaea03535.js": "/malls-of-cairo/precache-manifest.734e85020609485c2db1c03aaea03535.js",
+    "precache-manifest.cd31de335718d24a9b9c94c1bd1b3d6f.js": "/malls-of-cairo/precache-manifest.cd31de335718d24a9b9c94c1bd1b3d6f.js",
     "service-worker.js": "/malls-of-cairo/service-worker.js",
-    "static/css/main.be92bb85.chunk.css.map": "/malls-of-cairo/static/css/main.be92bb85.chunk.css.map"
-  }
+    "static/css/main.be92bb85.chunk.css.map": "/malls-of-cairo/static/css/main.be92bb85.chunk.css.map",
+    "static/media/fs_fallback.jpg": "/malls-of-cairo/static/media/fs_fallback.69fea0a0.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.096cc336.js",
+    "static/js/2.2e442671.chunk.js",
+    "static/css/main.be92bb85.chunk.css",
+    "static/js/main.39a29ca0.chunk.js"
+  ]
 }
