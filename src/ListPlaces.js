@@ -31,7 +31,7 @@ class ListPlaces extends Component {
 
       const markup = `
                 <img class="photo" src="${bestPhoto ? `${bestPhoto.prefix}500x300${bestPhoto.suffix}` : fallbackImg}" alt="${name}" onload="this.parentElement.parentElement.scrollIntoView({behavior: 'smooth'})">
-                <div class="rating" style="color: #${ratingColor};">${rating}</div>
+                ${rating ? `<div class="rating" style="color: #${ratingColor};">${rating}</div>` : ''}
                 <div class="address"><svg><use xlink:href="./icons.svg#marker"></use></svg>${location.formattedAddress[0]}</div>
                 <div class="status"><svg><use xlink:href="./icons.svg#like"></use></svg>Liked by ${likes.count} user</div>
                 <a class="link" href="${canonicalUrl}" target="_blank" rel="noopener noreferrer">More on FourSquare<svg><use xlink:href="./icons.svg#link"></use></svg></a>
