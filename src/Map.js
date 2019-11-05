@@ -7,7 +7,7 @@ class Map extends Component {
 
   updateMarkers = (malls, prevMalls) => {
     const { markers } = this.state
-    const { map } = this.props
+    const { map, setSelected } = this.props
     const { maps } = window.google
 
     if (!markers.length) {
@@ -23,6 +23,9 @@ class Map extends Component {
           map: map,
           id: mall.id
         })
+
+        marker.addListener('click', () => setSelected(mall))
+        // marker.addListener('mouseover', () => console.log(mall.name))
 
         tempMarkers.push(marker)
       })
