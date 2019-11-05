@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 
 class Map extends Component {
   state = {
-    bounds: null,
     markers: []
   }
 
   updateMarkers = (malls, prevMalls) => {
-    const { markers, bounds } = this.state
+    const { markers } = this.state
     const { map } = this.props
     const { maps } = window.google
 
@@ -16,8 +15,10 @@ class Map extends Component {
       let tempMarkers = []
 
       malls.forEach(mall => {
+        const position = { lat: mall.location.lat, lng: mall.location.lng }
+
         let marker = new maps.Marker({
-          position: { lat: mall.location.lat, lng: mall.location.lng },
+          position,
           animation: maps.Animation.DROP,
           map: map,
           id: mall.id
@@ -79,33 +80,27 @@ class Map extends Component {
   //   if (mall !== this.props.selected) this.props.selectMall(mall)
   // }
 
-  recenterMap = location => {
+  recenterMap = (location = { lat: 30.0444, lng: 31.2357 }, zoom = 11) => {
     const { map } = this.props
-    map.setZoom(15)
+    map.setZoom(zoom)
     map.setCenter(location)
   }
 
   activateMarker = marker => {
-    const { maps } = window.google
-    marker.setAnimation(maps.Animation.BOUNCE)
-    this.recenterMap(marker.position)
+    marker.setAnimation(1)
+    this.recenterMap(marker.position, 15)
   }
 
   deactivateMarker = marker => {
-    const { maps } = window.google
-    marker.setAnimation(null)
+    marker.setAnimation(5)
   }
 
   componentDidUpdate(prevProps) {
-    const { filteredList, selectedId } = this.props
-    const { markers } = this.state
     const { maps } = window.google
+    const { filteredList, selectedId, map } = this.props
+    const { markers } = this.state
 
-    if (maps) {
-      if (this.state.bounds === null) {
-        this.setState({ bounds: new window.google.maps.LatLngBounds() })
-      }
-
+    if (maps && map) {
       if (filteredList.length !== prevProps.filteredList.length) {
         this.updateMarkers(filteredList, prevProps.filteredList)
       }
@@ -116,6 +111,7 @@ class Map extends Component {
         })
       } else {
         markers.forEach(marker => this.deactivateMarker(marker))
+        this.recenterMap()
       }
     }
 
