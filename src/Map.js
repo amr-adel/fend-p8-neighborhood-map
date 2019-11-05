@@ -1,97 +1,127 @@
 import React, { Component } from 'react'
-import Data from './Data'
-import scriptLoader from 'react-async-script-loader'
 
 class Map extends Component {
   state = {
-    map: null,
     bounds: null,
-    markers: [],
-    google: null
+    markers: []
   }
 
-  // UNSAFE_componentWillReceiveProps({ isScriptLoaded, isScriptLoadSucceed }) {
-  //   if (isScriptLoaded && !this.props.isScriptLoaded) {
-  //     if (isScriptLoadSucceed) {
-  //       var map = new window.google.maps.Map(document.getElementById('map'), {
-  //         zoom: 11,
-  //         center: { lat: 30.0444, lng: 31.2357 },
-  //         styles: Data.mapStyles,
-  //         disableDefaultUI: true
-  //       })
+  updateMarkers = (malls, prevMalls) => {
+    const { markers, bounds } = this.state
+    const { map } = this.props
+    const { maps } = window.google
 
-  //       var bounds = new window.google.maps.LatLngBounds()
+    if (!markers.length) {
+      let marker
+      let tempMarkers = []
 
-  //       this.setState({ map: map, bounds: bounds, google: window.google.maps })
-  //     } else alert(`Unable to Load Google Maps`)
-  //   }
-  // }
+      malls.forEach(mall => {
+        let marker = new maps.Marker({
+          position: { lat: mall.location.lat, lng: mall.location.lng },
+          animation: maps.Animation.DROP,
+          map: map,
+          id: mall.id
+        })
 
-  updateMarkers = function(malls) {
-    const { markers, google, map, bounds } = this.state
-
-    markers.map(marker => marker.setMap(null))
-
-    let marker
-    let newMarkers = []
-
-    malls.forEach(mall => {
-      marker = new google.Marker({
-        position: mall.location,
-        animation: google.Animation.DROP,
-        map: map,
-        id: mall.id
+        tempMarkers.push(marker)
       })
 
-      marker.addListener('click', () => this.selectMall(mall))
+      this.setState({ markers: tempMarkers })
+    }
 
-      bounds.extend(mall.location)
-
-      newMarkers.push(marker)
-    })
-
-    this.setState({ markers: newMarkers })
-
-    map.fitBounds(bounds)
-    map.setCenter(bounds.getCenter())
+    if (malls.length < prevMalls.length) {
+      const mallsIds = malls.map(mall => mall.id)
+      const prevMallsIds = prevMalls.map(mall => mall.id)
+      const mallsRemoved = prevMallsIds.filter(id => mallsIds.indexOf(id) === -1)
+      console.log(mallsRemoved)
+      markers.forEach(marker => {
+        if (mallsRemoved.indexOf(marker.id) !== -1) marker.setMap(null)
+      })
+    } else if (malls.length > prevMalls.length) {
+      const mallsIds = malls.map(mall => mall.id)
+      const prevMallsIds = prevMalls.map(mall => mall.id)
+      const mallsAdded = mallsIds.filter(id => prevMallsIds.indexOf(id) === -1)
+      console.log(mallsAdded)
+      markers.forEach(marker => {
+        if (mallsAdded.indexOf(marker.id) !== -1) marker.setMap(map)
+      })
+    }
   }
 
-  selectMall(mall) {
-    if (mall !== this.props.selected) this.props.selectMall(mall)
-  }
-
-  recenterMap = function(coor) {
-    this.state.map.setZoom(15)
-    this.state.map.setCenter(coor)
-  }
-
-  // componentDidUpdate(prevProps, prevState) {
+  // updateMarkers = function(malls) {
   //   const { markers, google, map, bounds } = this.state
-  //   const { selected, filteredMalls } = this.props
 
-  //   if (google !== prevState.google) {
-  //     this.updateMarkers(filteredMalls)
-  //   }
+  //   markers.map(marker => marker.setMap(null))
 
-  //   if (google !== null && filteredMalls.length !== prevProps.filteredMalls.length) {
-  //     this.updateMarkers(filteredMalls)
-  //   }
+  //   let marker
+  //   let newMarkers = []
 
-  //   markers.map(marker => marker.setAnimation(null))
+  //   malls.forEach(mall => {
+  //     marker = new google.Marker({
+  //       position: mall.location,
+  //       animation: google.Animation.DROP,
+  //       map: map,
+  //       id: mall.id
+  //     })
 
-  //   if (selected !== null && markers) {
-  //     const activeMarkerIndex = markers.map(marker => marker.id).indexOf(selected.id)
-  //     markers[activeMarkerIndex].setAnimation(google.Animation.BOUNCE)
+  //     marker.addListener('click', () => this.selectMall(mall))
 
-  //     this.recenterMap(selected.location)
-  //   } else if (google !== null && selected === null) {
-  //     map.fitBounds(bounds)
-  //     map.setCenter(bounds.getCenter())
-  //   }
+  //     bounds.extend(mall.location)
+
+  //     newMarkers.push(marker)
+  //   })
+
+  //   this.setState({ markers: newMarkers })
+
+  //   map.fitBounds(bounds)
+  //   map.setCenter(bounds.getCenter())
   // }
 
+  // selectMall(mall) {
+  //   if (mall !== this.props.selected) this.props.selectMall(mall)
+  // }
+
+  recenterMap = coor => {
+    const { map } = this.props
+    map.setZoom(15)
+    map.setCenter(coor)
+  }
+
+  componentDidUpdate(prevProps) {
+    const { filteredList } = this.props
+    if (window.google && this.state.bounds === null) {
+      this.setState({ bounds: new window.google.maps.LatLngBounds() })
+    }
+
+    if (window.google && filteredList.length !== prevProps.filteredList.length) {
+      this.updateMarkers(filteredList, prevProps.filteredList)
+    }
+
+    //   const { markers, google, map, bounds } = this.state
+    //   const { selected, filteredMalls } = this.props
+
+    //   if (google !== prevState.google) {
+    //     this.updateMarkers(filteredMalls)
+    //   }
+
+    //   if (google !== null && filteredMalls.length !== prevProps.filteredMalls.length) {
+    //     this.updateMarkers(filteredMalls)
+    //   }
+
+    //   markers.map(marker => marker.setAnimation(null))
+
+    //   if (selected !== null && markers) {
+    //     const activeMarkerIndex = markers.map(marker => marker.id).indexOf(selected.id)
+    //     markers[activeMarkerIndex].setAnimation(google.Animation.BOUNCE)
+
+    //     this.recenterMap(selected.location)
+    //   } else if (google !== null && selected === null) {
+    //     map.fitBounds(bounds)
+    //     map.setCenter(bounds.getCenter())
+    //   }
+  }
+
   render() {
-    console.log(this.props)
     return (
       <div id='map' role='application' aria-roledescription='map for malls list'>
         Loading map...

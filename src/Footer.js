@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Footer = () => {
-  console.log('Footer Rendered')
   return (
     <footer className='footer' id='footer'>
       <div className='footer__follow'>

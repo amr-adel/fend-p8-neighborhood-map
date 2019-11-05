@@ -34,25 +34,29 @@ class App extends Component {
     this.setState({ selected: mall })
   }
 
-  initGMap = () => {
-    new window.google.maps.Map(document.getElementById('map'), {
-      zoom: 11,
-      center: { lat: 30.0444, lng: 31.2357 },
-      styles: Data.mapStyles,
-      disableDefaultUI: true
-    })
+  AsyncHOCCallback = () => {
+    if (window.google) {
+      console.log('Callback Fired!!')
+      var map = new window.google.maps.Map(document.getElementById('map'), {
+        zoom: 11,
+        center: { lat: 30.0444, lng: 31.2357 },
+        styles: Data.mapStyles,
+        disableDefaultUI: true
+      })
+
+      this.setState({ map })
+    }
   }
 
   render() {
-    console.log('state: ', this.state)
-    const { filteredList, selected } = this.state
+    const { filteredList, selected, map, gMaps } = this.state
     let selectedId = selected ? selected.id : null
 
     return (
       <div className='App'>
         <Sidebar filterList={this.filterList} setSelected={this.setSelected} selectedId={selectedId} filteredList={filteredList} />
 
-        {/* <AsyncHOC asyncScriptOnLoad={this.initGMap} setSelected={this.setSelected} selected={selected} filteredList={filteredList} /> */}
+        <AsyncHOC asyncScriptOnLoad={this.AsyncHOCCallback} setSelected={this.setSelected} selected={selected} filteredList={filteredList} map={map} />
       </div>
     )
   }

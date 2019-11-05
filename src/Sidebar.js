@@ -3,7 +3,6 @@ import List from './List'
 import Footer from './Footer'
 
 const Sidebar = props => {
-  console.log('Sidebar Rendered')
   return (
     <section className='sidebar'>
       <header className='header'>
