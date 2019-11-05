@@ -24,8 +24,13 @@ class Map extends Component {
           id: mall.id
         })
 
+        var infowindow = new maps.InfoWindow({
+          content: `<h4>${mall.name}</h4>`
+        })
+
         marker.addListener('click', () => setSelected(mall))
-        // marker.addListener('mouseover', () => console.log(mall.name))
+        marker.addListener('mouseover', () => infowindow.open(map, marker))
+        marker.addListener('mouseout', () => infowindow.close())
 
         tempMarkers.push(marker)
       })
