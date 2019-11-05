@@ -10,22 +10,22 @@ class Map extends Component {
     google: null
   }
 
-  UNSAFE_componentWillReceiveProps({ isScriptLoaded, isScriptLoadSucceed }) {
-    if (isScriptLoaded && !this.props.isScriptLoaded) {
-      if (isScriptLoadSucceed) {
-        var map = new window.google.maps.Map(document.getElementById('map'), {
-          zoom: 11,
-          center: { lat: 30.0444, lng: 31.2357 },
-          styles: Data.mapStyles,
-          disableDefaultUI: true
-        })
+  // UNSAFE_componentWillReceiveProps({ isScriptLoaded, isScriptLoadSucceed }) {
+  //   if (isScriptLoaded && !this.props.isScriptLoaded) {
+  //     if (isScriptLoadSucceed) {
+  //       var map = new window.google.maps.Map(document.getElementById('map'), {
+  //         zoom: 11,
+  //         center: { lat: 30.0444, lng: 31.2357 },
+  //         styles: Data.mapStyles,
+  //         disableDefaultUI: true
+  //       })
 
-        var bounds = new window.google.maps.LatLngBounds()
+  //       var bounds = new window.google.maps.LatLngBounds()
 
-        this.setState({ map: map, bounds: bounds, google: window.google.maps })
-      } else alert(`Unable to Load Google Maps`)
-    }
-  }
+  //       this.setState({ map: map, bounds: bounds, google: window.google.maps })
+  //     } else alert(`Unable to Load Google Maps`)
+  //   }
+  // }
 
   updateMarkers = function(malls) {
     const { markers, google, map, bounds } = this.state
@@ -65,32 +65,33 @@ class Map extends Component {
     this.state.map.setCenter(coor)
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { markers, google, map, bounds } = this.state
-    const { selected, filteredMalls } = this.props
+  // componentDidUpdate(prevProps, prevState) {
+  //   const { markers, google, map, bounds } = this.state
+  //   const { selected, filteredMalls } = this.props
 
-    if (google !== prevState.google) {
-      this.updateMarkers(filteredMalls)
-    }
+  //   if (google !== prevState.google) {
+  //     this.updateMarkers(filteredMalls)
+  //   }
 
-    if (google !== null && filteredMalls.length !== prevProps.filteredMalls.length) {
-      this.updateMarkers(filteredMalls)
-    }
+  //   if (google !== null && filteredMalls.length !== prevProps.filteredMalls.length) {
+  //     this.updateMarkers(filteredMalls)
+  //   }
 
-    markers.map(marker => marker.setAnimation(null))
+  //   markers.map(marker => marker.setAnimation(null))
 
-    if (selected !== null && markers) {
-      const activeMarkerIndex = markers.map(marker => marker.id).indexOf(selected.id)
-      markers[activeMarkerIndex].setAnimation(google.Animation.BOUNCE)
+  //   if (selected !== null && markers) {
+  //     const activeMarkerIndex = markers.map(marker => marker.id).indexOf(selected.id)
+  //     markers[activeMarkerIndex].setAnimation(google.Animation.BOUNCE)
 
-      this.recenterMap(selected.location)
-    } else if (google !== null && selected === null) {
-      map.fitBounds(bounds)
-      map.setCenter(bounds.getCenter())
-    }
-  }
+  //     this.recenterMap(selected.location)
+  //   } else if (google !== null && selected === null) {
+  //     map.fitBounds(bounds)
+  //     map.setCenter(bounds.getCenter())
+  //   }
+  // }
 
   render() {
+    console.log(this.props)
     return (
       <div id='map' role='application' aria-roledescription='map for malls list'>
         Loading map...
@@ -99,4 +100,4 @@ class Map extends Component {
   }
 }
 
-export default scriptLoader('https://maps.googleapis.com/maps/api/js?key=AIzaSyCA5F0pGoVUQo0ZTtUInz6Kd_XfmOW3rAI')(Map)
+export default Map
