@@ -79,10 +79,21 @@ class Map extends Component {
   //   if (mall !== this.props.selected) this.props.selectMall(mall)
   // }
 
-  recenterMap = coor => {
+  recenterMap = location => {
     const { map } = this.props
     map.setZoom(15)
-    map.setCenter(coor)
+    map.setCenter(location)
+  }
+
+  activateMarker = marker => {
+    const { maps } = window.google
+    marker.setAnimation(maps.Animation.BOUNCE)
+    this.recenterMap(marker.position)
+  }
+
+  deactivateMarker = marker => {
+    const { maps } = window.google
+    marker.setAnimation(null)
   }
 
   componentDidUpdate(prevProps) {
@@ -101,10 +112,10 @@ class Map extends Component {
 
       if (selectedId !== null) {
         markers.forEach(marker => {
-          marker.id === selectedId ? marker.setAnimation(maps.Animation.BOUNCE) : marker.setAnimation(null)
+          marker.id === selectedId ? this.activateMarker(marker) : this.deactivateMarker(marker)
         })
       } else {
-        markers.forEach(marker => marker.setAnimation(null))
+        markers.forEach(marker => this.deactivateMarker(marker))
       }
     }
 
