@@ -26,7 +26,8 @@ class App extends Component {
 
   filterList = query => {
     this.setState({
-      filteredList: this.state.malls.filter(mall => mall.name.toLowerCase().indexOf(query.trim().toLowerCase()) !== -1)
+      filteredList: this.state.malls.filter(mall => mall.name.toLowerCase().indexOf(query.trim().toLowerCase()) !== -1),
+      selected: null
     })
   }
 
@@ -56,7 +57,7 @@ class App extends Component {
       <div className='App'>
         <Sidebar filterList={this.filterList} setSelected={this.setSelected} selectedId={selectedId} filteredList={filteredList} />
 
-        <AsyncHOC asyncScriptOnLoad={this.AsyncHOCCallback} setSelected={this.setSelected} selected={selected} filteredList={filteredList} map={map} />
+        <AsyncHOC asyncScriptOnLoad={this.AsyncHOCCallback} setSelected={this.setSelected} selectedId={selectedId} filteredList={filteredList} map={map} />
       </div>
     )
   }

@@ -33,7 +33,6 @@ class Map extends Component {
       const mallsIds = malls.map(mall => mall.id)
       const prevMallsIds = prevMalls.map(mall => mall.id)
       const mallsRemoved = prevMallsIds.filter(id => mallsIds.indexOf(id) === -1)
-      console.log(mallsRemoved)
       markers.forEach(marker => {
         if (mallsRemoved.indexOf(marker.id) !== -1) marker.setMap(null)
       })
@@ -41,7 +40,6 @@ class Map extends Component {
       const mallsIds = malls.map(mall => mall.id)
       const prevMallsIds = prevMalls.map(mall => mall.id)
       const mallsAdded = mallsIds.filter(id => prevMallsIds.indexOf(id) === -1)
-      console.log(mallsAdded)
       markers.forEach(marker => {
         if (mallsAdded.indexOf(marker.id) !== -1) marker.setMap(map)
       })
@@ -88,13 +86,26 @@ class Map extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { filteredList } = this.props
-    if (window.google && this.state.bounds === null) {
-      this.setState({ bounds: new window.google.maps.LatLngBounds() })
-    }
+    const { filteredList, selectedId } = this.props
+    const { markers } = this.state
+    const { maps } = window.google
 
-    if (window.google && filteredList.length !== prevProps.filteredList.length) {
-      this.updateMarkers(filteredList, prevProps.filteredList)
+    if (maps) {
+      if (this.state.bounds === null) {
+        this.setState({ bounds: new window.google.maps.LatLngBounds() })
+      }
+
+      if (filteredList.length !== prevProps.filteredList.length) {
+        this.updateMarkers(filteredList, prevProps.filteredList)
+      }
+
+      if (selectedId !== null) {
+        markers.forEach(marker => {
+          marker.id === selectedId ? marker.setAnimation(maps.Animation.BOUNCE) : marker.setAnimation(null)
+        })
+      } else {
+        markers.forEach(marker => marker.setAnimation(null))
+      }
     }
 
     //   const { markers, google, map, bounds } = this.state
