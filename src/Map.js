@@ -114,6 +114,7 @@ class Map extends Component {
           })
         } else {
           markers.forEach(marker => this.deactivateMarker(marker))
+          if (filteredList.length > 1) this.fitBounds(filteredList)
         }
       }
     }
