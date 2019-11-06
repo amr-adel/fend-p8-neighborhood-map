@@ -31,7 +31,7 @@ const Mall = ({ mall, setSelected, isSelected }) => {
     }
   }
 
-  // if (isSelected) fetchFourSquare(mall.id)
+  if (isSelected) fetchFourSquare(mall.id)
 
   return (
     <li className={`place${isSelected ? ' selected' : ''}`} role='button' tabIndex='0' id={`fs${mall.id}`} onClick={e => handleClick()} onKeyPress={e => handleClick()}>

@@ -89,13 +89,22 @@ class Map extends Component {
 
   componentDidUpdate(prevProps) {
     const { maps } = window.google
-    const { filteredList, selectedId, map } = this.props
+    const { filteredList, setSelected, selectedId, map } = this.props
     const { markers } = this.state
 
     if (maps && map) {
       if (filteredList.length !== prevProps.filteredList.length) {
         this.updateMarkers(filteredList, prevProps.filteredList)
-        this.fitBounds(filteredList)
+        switch (filteredList.length) {
+          case 0:
+            this.recenterMap()
+            break
+          case 1:
+            setSelected(filteredList[0])
+            break
+          default:
+            this.fitBounds(filteredList)
+        }
       }
 
       if (selectedId !== prevProps.selectedId) {
@@ -105,7 +114,6 @@ class Map extends Component {
           })
         } else {
           markers.forEach(marker => this.deactivateMarker(marker))
-          this.fitBounds(filteredList)
         }
       }
     }
