@@ -37,7 +37,6 @@ class App extends Component {
 
   AsyncHOCCallback = () => {
     if (window.google) {
-      console.log('Callback Fired!!')
       var map = new window.google.maps.Map(document.getElementById('map'), {
         zoom: 11,
         center: { lat: 30.0444, lng: 31.2357 },
@@ -50,7 +49,7 @@ class App extends Component {
   }
 
   render() {
-    const { filteredList, selected, map, gMaps } = this.state
+    const { filteredList, selected, map } = this.state
     let selectedId = selected ? selected.id : null
 
     return (

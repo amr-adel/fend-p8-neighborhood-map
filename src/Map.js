@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 class Map extends Component {
   state = {
+    bounds: null,
     markers: []
   }
 
@@ -11,13 +12,13 @@ class Map extends Component {
     const { maps } = window.google
 
     if (!markers.length) {
-      let marker
       let tempMarkers = []
 
       malls.forEach(mall => {
+        let marker
         const position = { lat: mall.location.lat, lng: mall.location.lng }
 
-        let marker = new maps.Marker({
+        marker = new maps.Marker({
           position,
           animation: maps.Animation.DROP,
           map: map,
@@ -38,16 +39,15 @@ class Map extends Component {
       this.setState({ markers: tempMarkers })
     }
 
+    const mallsIds = malls.map(mall => mall.id)
+    const prevMallsIds = prevMalls.map(mall => mall.id)
+
     if (malls.length < prevMalls.length) {
-      const mallsIds = malls.map(mall => mall.id)
-      const prevMallsIds = prevMalls.map(mall => mall.id)
       const mallsRemoved = prevMallsIds.filter(id => mallsIds.indexOf(id) === -1)
       markers.forEach(marker => {
         if (mallsRemoved.indexOf(marker.id) !== -1) marker.setMap(null)
       })
     } else if (malls.length > prevMalls.length) {
-      const mallsIds = malls.map(mall => mall.id)
-      const prevMallsIds = prevMalls.map(mall => mall.id)
       const mallsAdded = mallsIds.filter(id => prevMallsIds.indexOf(id) === -1)
       markers.forEach(marker => {
         if (mallsAdded.indexOf(marker.id) !== -1) marker.setMap(map)
@@ -55,38 +55,22 @@ class Map extends Component {
     }
   }
 
-  // updateMarkers = function(malls) {
-  //   const { markers, google, map, bounds } = this.state
+  fitBounds = async places => {
+    const { maps } = window.google
+    const { map } = this.props
 
-  //   markers.map(marker => marker.setMap(null))
+    const newBounds = await new maps.LatLngBounds()
 
-  //   let marker
-  //   let newMarkers = []
+    this.setState({ bounds: newBounds })
 
-  //   malls.forEach(mall => {
-  //     marker = new google.Marker({
-  //       position: mall.location,
-  //       animation: google.Animation.DROP,
-  //       map: map,
-  //       id: mall.id
-  //     })
+    places.forEach(place => {
+      const position = { lat: place.location.lat, lng: place.location.lng }
+      this.state.bounds.extend(position)
+    })
 
-  //     marker.addListener('click', () => this.selectMall(mall))
-
-  //     bounds.extend(mall.location)
-
-  //     newMarkers.push(marker)
-  //   })
-
-  //   this.setState({ markers: newMarkers })
-
-  //   map.fitBounds(bounds)
-  //   map.setCenter(bounds.getCenter())
-  // }
-
-  // selectMall(mall) {
-  //   if (mall !== this.props.selected) this.props.selectMall(mall)
-  // }
+    map.fitBounds(this.state.bounds)
+    map.setCenter(this.state.bounds.getCenter())
+  }
 
   recenterMap = (location = { lat: 30.0444, lng: 31.2357 }, zoom = 11) => {
     const { map } = this.props
@@ -111,40 +95,20 @@ class Map extends Component {
     if (maps && map) {
       if (filteredList.length !== prevProps.filteredList.length) {
         this.updateMarkers(filteredList, prevProps.filteredList)
+        this.fitBounds(filteredList)
       }
 
-      if (selectedId !== null) {
-        markers.forEach(marker => {
-          marker.id === selectedId ? this.activateMarker(marker) : this.deactivateMarker(marker)
-        })
-      } else {
-        markers.forEach(marker => this.deactivateMarker(marker))
-        this.recenterMap()
+      if (selectedId !== prevProps.selectedId) {
+        if (selectedId !== null) {
+          markers.forEach(marker => {
+            marker.id === selectedId ? this.activateMarker(marker) : this.deactivateMarker(marker)
+          })
+        } else {
+          markers.forEach(marker => this.deactivateMarker(marker))
+          this.fitBounds(filteredList)
+        }
       }
     }
-
-    //   const { markers, google, map, bounds } = this.state
-    //   const { selected, filteredMalls } = this.props
-
-    //   if (google !== prevState.google) {
-    //     this.updateMarkers(filteredMalls)
-    //   }
-
-    //   if (google !== null && filteredMalls.length !== prevProps.filteredMalls.length) {
-    //     this.updateMarkers(filteredMalls)
-    //   }
-
-    //   markers.map(marker => marker.setAnimation(null))
-
-    //   if (selected !== null && markers) {
-    //     const activeMarkerIndex = markers.map(marker => marker.id).indexOf(selected.id)
-    //     markers[activeMarkerIndex].setAnimation(google.Animation.BOUNCE)
-
-    //     this.recenterMap(selected.location)
-    //   } else if (google !== null && selected === null) {
-    //     map.fitBounds(bounds)
-    //     map.setCenter(bounds.getCenter())
-    //   }
   }
 
   render() {
