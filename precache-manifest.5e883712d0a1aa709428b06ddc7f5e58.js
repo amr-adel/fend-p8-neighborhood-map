@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9bc824d9d29c241e4e614cdd6a5536fb",
+    "revision": "86c2f4808f87b5635826f67653710e2a",
     "url": "/malls-of-cairo/index.html"
   },
   {
-    "revision": "8dfa1cf2d42523ca75b9",
+    "revision": "8e284c6802426a4dae1a",
     "url": "/malls-of-cairo/static/css/main.e394fa3c.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/malls-of-cairo/static/js/2.db45cf5a.chunk.js"
   },
   {
-    "revision": "8dfa1cf2d42523ca75b9",
-    "url": "/malls-of-cairo/static/js/main.26af983b.chunk.js"
+    "revision": "8e284c6802426a4dae1a",
+    "url": "/malls-of-cairo/static/js/main.8f94cf2f.chunk.js"
   },
   {
     "revision": "c1ecfd5c6a48e1b93ae9",
