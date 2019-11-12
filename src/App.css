@@ -154,13 +154,16 @@ body {
   right: 0.2rem;
   width: 2.5rem;
   height: 2.5rem;
-  color: var(--brown-l);
-  background-color: var(--red);
+  background-color: var(--brown);
   border-radius: 5rem;
-  font-size: 1.5rem;
-  line-height: 2.5rem;
-  text-align: center;
   cursor: pointer;
+}
+
+.close svg {
+  height: 80%;
+  width: 80%;
+  fill: var(--brown-l);
+  display: block;
 }
 
 .details {
@@ -248,7 +251,9 @@ body {
 }
 
 .selected .close {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .selected .details {

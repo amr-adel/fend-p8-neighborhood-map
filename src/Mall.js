@@ -1,5 +1,6 @@
 import React from 'react'
 import fallbackImg from './images/fs_fallback.jpg'
+import Icon from './Icon'
 
 const Mall = ({ mall, setSelected, isSelected }) => {
   const handleClick = () => {
@@ -37,7 +38,7 @@ const Mall = ({ mall, setSelected, isSelected }) => {
     <li className={`place${isSelected ? ' selected' : ''}`} role='button' tabIndex='0' id={`fs${mall.id}`} onClick={e => handleClick()} onKeyPress={e => handleClick()}>
       <h4 className='name'>{mall.name}</h4>
       <span className='close' aria-label='Close' role='button' tabIndex='0' onClick={e => setSelected(null)}>
-        X
+        <Icon name='times' />
       </span>
       <div className='details'>Loading mall details...</div>
     </li>

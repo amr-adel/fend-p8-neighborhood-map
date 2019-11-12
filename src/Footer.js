@@ -1,28 +1,21 @@
 import React from 'react'
+import Icon from './Icon'
 
 const Footer = () => {
   return (
     <footer className='footer' id='footer'>
       <div className='footer__follow'>
         <a href='https://twitter.com/fullstackamr/' target='_blank' rel='noopener noreferrer'>
-          <svg>
-            <use xlinkHref='./icons.svg#twitter'></use>
-          </svg>
+          <Icon name='twitter' />
         </a>
         <a href='https://github.com/amr-adel/' target='_blank' rel='noopener noreferrer'>
-          <svg>
-            <use xlinkHref='./icons.svg#github'></use>
-          </svg>
+          <Icon name='github' />
         </a>
         <a href='https://www.linkedin.com/in/amr-abdelmoez/' target='_blank' rel='noopener noreferrer'>
-          <svg>
-            <use xlinkHref='./icons.svg#linkedin'></use>
-          </svg>
+          <Icon name='linkedin' />
         </a>
         <a href='https://codepen.io/amr-adel/' target='_blank' rel='noopener noreferrer'>
-          <svg>
-            <use xlinkHref='./icons.svg#codepen'></use>
-          </svg>
+          <Icon name='codepen' />
         </a>
       </div>
     </footer>

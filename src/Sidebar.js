@@ -7,11 +7,7 @@ const Sidebar = props => {
     <section className='sidebar'>
       <header className='header'>
         <div className='brand'>
-          <h1>
-            <svg className='logo'>
-              <use xlinkHref='./icons.svg#bag'></use>
-            </svg>
-          </h1>
+          <h1>Malls of Cairo</h1>
         </div>
       </header>
 
