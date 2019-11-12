@@ -1,6 +1,7 @@
 import React from 'react'
 import fallbackImg from './images/fs_fallback.jpg'
 import Icon from './Icon'
+import icons from './images/icons.svg'
 
 const Mall = ({ mall, setSelected, isSelected }) => {
   const handleClick = () => {
@@ -21,9 +22,9 @@ const Mall = ({ mall, setSelected, isSelected }) => {
       const markup = `
                 <img class="photo" src="${bestPhoto ? `${bestPhoto.prefix}500x300${bestPhoto.suffix}` : fallbackImg}" alt="${name}" onload="this.parentElement.parentElement.scrollIntoView({behavior: 'smooth'})">
                 ${rating ? `<div class="rating" style="color: #${ratingColor};">${rating}</div>` : ''}
-                <div class="address"><svg><use xlink:href="./icons.svg#marker"></use></svg>${location.formattedAddress[0]}</div>
-                <div class="status"><svg><use xlink:href="./icons.svg#like"></use></svg>Liked by ${likes.count} user</div>
-                <a class="link" href="${canonicalUrl}" target="_blank" rel="noopener noreferrer">More on FourSquare<svg><use xlink:href="./icons.svg#link"></use></svg></a>
+                <div class="address"><svg><use href="${icons}#marker"></use></svg>${location.formattedAddress[0]}</div>
+                <div class="status"><svg><use href="${icons}#like"></use></svg>Liked by ${likes.count} user</div>
+                <a class="link" href="${canonicalUrl}" target="_blank" rel="noopener noreferrer">More on FourSquare<svg><use href="${icons}#link"></use></svg></a>
             `
 
       document.querySelector(`#fs${id} .details`).innerHTML = markup
