@@ -7,7 +7,7 @@ const Mall = ({ mall, setSelected, isSelected }) => {
   }
 
   const fetchFourSquare = id => {
-    fetch(`https://api.foursquare.com/v2/venues/${id}?client_id=N0UR5Z3XKXDNY4GWMBV4H4J0VZIHDCKLUZIZ0U4RBNLAE1CG&client_secret=LVDZ0NKPQVY1SMUFSVJJT02ARZOJXWUFMIJ1AZ0ACSLMKNHR&v=20180620`)
+    fetch(`https://api.foursquare.com/v2/venues/${id}?client_id=${process.env.REACT_APP_FOURSQUARE_CLIENT_ID}&client_secret=${process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET}&v=20191020`)
       .then(res => res.json())
       .then(data => detailsOutput(data))
       .catch(err => alert(`Unable to get data from FourSquare (${err})`))

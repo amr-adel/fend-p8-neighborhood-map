@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(`https://api.foursquare.com/v2/venues/search?near=cairo&categoryId=4bf58dd8d48988d1fd941735&client_id=N0UR5Z3XKXDNY4GWMBV4H4J0VZIHDCKLUZIZ0U4RBNLAE1CG&client_secret=LVDZ0NKPQVY1SMUFSVJJT02ARZOJXWUFMIJ1AZ0ACSLMKNHR&v=20191020`)
+    fetch(`https://api.foursquare.com/v2/venues/search?near=cairo&categoryId=4bf58dd8d48988d1fd941735&client_id=${process.env.REACT_APP_FOURSQUARE_CLIENT_ID}&client_secret=${process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET}&v=20191020`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -62,7 +62,7 @@ class App extends Component {
   }
 }
 
-const URL = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCA5F0pGoVUQo0ZTtUInz6Kd_XfmOW3rAI'
+const URL = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GMAP_KEY}`
 
 const AsyncHOC = makeAsyncScriptLoader(URL)(Map)
 
