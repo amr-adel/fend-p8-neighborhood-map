@@ -90,11 +90,10 @@ class Map extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { maps } = window.google;
-    const { filteredList, setSelected, selectedId, map } = this.props;
-    const { markers } = this.state;
+    if (window.google && this.props.map) {
+      const { filteredList, setSelected, selectedId } = this.props;
+      const { markers } = this.state;
 
-    if (maps && map) {
       if (filteredList.length !== prevProps.filteredList.length) {
         this.updateMarkers(filteredList, prevProps.filteredList);
         switch (filteredList.length) {
