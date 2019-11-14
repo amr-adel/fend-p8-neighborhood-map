@@ -1,22 +1,27 @@
 {
   "files": {
-    "main.css": "/malls-of-cairo/static/css/main.e394fa3c.chunk.css",
-    "main.js": "/malls-of-cairo/static/js/main.8f94cf2f.chunk.js",
-    "main.js.map": "/malls-of-cairo/static/js/main.8f94cf2f.chunk.js.map",
+    "main.css": "/malls-of-cairo/static/css/main.51347adf.chunk.css",
+    "main.js": "/malls-of-cairo/static/js/main.99ba8ee6.chunk.js",
+    "main.js.map": "/malls-of-cairo/static/js/main.99ba8ee6.chunk.js.map",
     "runtime-main.js": "/malls-of-cairo/static/js/runtime-main.096cc336.js",
     "runtime-main.js.map": "/malls-of-cairo/static/js/runtime-main.096cc336.js.map",
-    "static/js/2.db45cf5a.chunk.js": "/malls-of-cairo/static/js/2.db45cf5a.chunk.js",
-    "static/js/2.db45cf5a.chunk.js.map": "/malls-of-cairo/static/js/2.db45cf5a.chunk.js.map",
+    "static/css/2.dfe7030c.chunk.css": "/malls-of-cairo/static/css/2.dfe7030c.chunk.css",
+    "static/js/2.8337967f.chunk.js": "/malls-of-cairo/static/js/2.8337967f.chunk.js",
+    "static/js/2.8337967f.chunk.js.map": "/malls-of-cairo/static/js/2.8337967f.chunk.js.map",
     "index.html": "/malls-of-cairo/index.html",
-    "precache-manifest.5e883712d0a1aa709428b06ddc7f5e58.js": "/malls-of-cairo/precache-manifest.5e883712d0a1aa709428b06ddc7f5e58.js",
+    "precache-manifest.531b45067104caed2dfff8aa3be86ae2.js": "/malls-of-cairo/precache-manifest.531b45067104caed2dfff8aa3be86ae2.js",
     "service-worker.js": "/malls-of-cairo/service-worker.js",
-    "static/css/main.e394fa3c.chunk.css.map": "/malls-of-cairo/static/css/main.e394fa3c.chunk.css.map",
-    "static/media/fs_fallback.jpg": "/malls-of-cairo/static/media/fs_fallback.69fea0a0.jpg"
+    "static/css/2.dfe7030c.chunk.css.map": "/malls-of-cairo/static/css/2.dfe7030c.chunk.css.map",
+    "static/css/main.51347adf.chunk.css.map": "/malls-of-cairo/static/css/main.51347adf.chunk.css.map",
+    "static/media/fs_fallback.jpg": "/malls-of-cairo/static/media/fs_fallback.69fea0a0.jpg",
+    "static/media/icons.svg": "/malls-of-cairo/static/media/icons.15413aca.svg",
+    "static/media/malls-of-cairo-logo.svg": "/malls-of-cairo/static/media/malls-of-cairo-logo.0a06d638.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.096cc336.js",
-    "static/js/2.db45cf5a.chunk.js",
-    "static/css/main.e394fa3c.chunk.css",
-    "static/js/main.8f94cf2f.chunk.js"
+    "static/css/2.dfe7030c.chunk.css",
+    "static/js/2.8337967f.chunk.js",
+    "static/css/main.51347adf.chunk.css",
+    "static/js/main.99ba8ee6.chunk.js"
   ]
 }
