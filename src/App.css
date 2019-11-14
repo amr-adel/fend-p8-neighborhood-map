@@ -23,7 +23,7 @@ html {
 }
 
 body {
-  font-family: 'K2D', sans-serif;
+  font-family: "K2D", sans-serif;
 }
 
 .blue {
@@ -46,31 +46,11 @@ body {
 .header {
   border-bottom: 1px solid var(--white);
   flex: 0 0 8vh;
-  margin: 0 1rem 2rem;
+  margin: 1rem 1rem 2rem;
 }
 
-.logo {
-  fill: var(--blue);
-  width: 2.2rem;
-  height: 2.2rem;
-  margin-right: 1rem;
-}
-
-.brand h1 {
-  font-size: 2.6rem;
-  text-transform: uppercase;
-  color: var(--brown-l);
-  font-weight: normal;
-  line-height: 8vh;
-  letter-spacing: 2px;
-}
-
-.brand h1 span {
-  color: var(--blue);
-  font-size: 1.6rem;
-  font-style: italic;
-  vertical-align: top;
-  margin: 0 3px;
+.brand img {
+  height: 6rem;
 }
 
 .filter {
@@ -78,7 +58,7 @@ body {
   border: none;
   border-radius: 3px;
   padding: 1rem 2rem;
-  margin: 0 1rem 2rem;
+  margin: 0 1rem 0;
   font-size: 1.6rem;
   color: var(--brown-l);
   background-color: var(--red-d);
@@ -94,8 +74,8 @@ body {
 }
 
 .places {
-  margin: auto 0;
   list-style: none;
+  margin: 1rem auto auto;
   overflow: auto;
 }
 
@@ -115,7 +95,7 @@ body {
 }
 
 .place:not(:last-child)::before {
-  content: '';
+  content: "";
   display: block;
   height: 6px;
   width: 6px;
@@ -131,7 +111,7 @@ body {
 }
 
 .place:not(:last-child)::after {
-  content: '';
+  content: "";
   display: block;
   height: 1px;
   width: 15rem;
@@ -273,10 +253,10 @@ body {
 /* =====================================  FOOTER  ============================================= */
 
 .footer {
-  flex: 0 0 4.2rem;
-  width: var(--sidebar-width);
+  align-self: flex-end;
+  width: 100%;
   background-color: var(--blue);
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 .footer__follow {
@@ -323,10 +303,11 @@ body {
     height: 35vh;
     top: 6rem;
     left: 0;
+    border-top: 1px solid var(--white);
+    border-bottom: 1px solid var(--white);
   }
   .sidebar {
     height: calc(65vh - 6rem);
-    display: block;
     width: 100vw;
     text-align: center;
     float: none;
@@ -334,7 +315,6 @@ body {
     bottom: 0;
   }
   .header {
-    border-bottom: 1px solid var(--white);
     margin: 0;
     position: fixed;
     top: 0;
@@ -342,20 +322,19 @@ body {
     background-color: var(--red);
     z-index: 10;
   }
-  .brand h1 {
-    line-height: 6rem;
+  .brand img {
+    height: 6rem;
+    padding: 1rem;
   }
   .filter {
     height: 6rem;
-    margin: 1rem 2rem 0;
+    margin: 1rem auto 0;
     width: calc(100vw - 4rem);
     max-width: 40rem;
   }
   .places {
-    height: 100%;
     width: calc(100vw - 4rem);
     max-width: 40rem;
-    margin: 0 auto;
   }
   .place {
     padding: 1.75rem 1rem;
@@ -371,11 +350,5 @@ body {
   }
   .selected .name {
     padding-right: 3.5rem;
-  }
-  .footer {
-    flex: 0 0 4.2rem;
-    width: 100vw;
-    background-color: var(--blue);
-    margin-bottom: 1rem;
   }
 }
