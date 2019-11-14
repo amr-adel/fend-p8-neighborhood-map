@@ -30,6 +30,13 @@ body {
   color: var(--blue);
 }
 
+.simplebar-scrollbar:before {
+  background: var(--blue);
+}
+
+.simplebar-scrollbar.simplebar-visible:before {
+  opacity: 0.8;
+}
 /* =====================================  SIDEBAR  ============================================= */
 
 .sidebar {

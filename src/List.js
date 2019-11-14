@@ -14,24 +14,27 @@ const List = ({ filteredList, filterList, selectedId, setSelected }) => {
         onChange={e => filterList(e.target.value)}
       />
 
-      <ol className="places">
-        {filteredList.length > 0 ? (
-          filteredList.map(mall => (
-            <Mall
-              key={mall.id}
-              mall={mall}
-              setSelected={setSelected}
-              isSelected={mall.id === selectedId}
-            />
-          ))
-        ) : (
-          <li className="place" key="no-match">
-            <h4 className="name">
-              Unfortunately, your keyword doesn't match any of the listed malls.
-            </h4>
-          </li>
-        )}
-      </ol>
+      <SimpleBar style={{ flexGrow: 1, height: 100 }}>
+        <ol className="places">
+          {filteredList.length > 0 ? (
+            filteredList.map(mall => (
+              <Mall
+                key={mall.id}
+                mall={mall}
+                setSelected={setSelected}
+                isSelected={mall.id === selectedId}
+              />
+            ))
+          ) : (
+            <li className="place" key="no-match">
+              <h4 className="name">
+                Unfortunately, your keyword doesn't match any of the listed
+                malls.
+              </h4>
+            </li>
+          )}
+        </ol>
+      </SimpleBar>
     </>
   );
 };
